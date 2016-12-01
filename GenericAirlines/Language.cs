@@ -9,12 +9,16 @@ namespace GenericAirlines
     [Table("Language")]
     public partial class Language
     {
+        [Key]
+        [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Id { get; set; }
+        public int Employee_id { get; set; }
 
-        [Column("Language")]
-        [Required]
+        [Key]
+        [Column("Language", Order = 1)]
         [StringLength(50)]
         public string Language1 { get; set; }
+
+        public virtual Employee Employee { get; set; }
     }
 }

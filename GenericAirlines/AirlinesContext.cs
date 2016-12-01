@@ -42,6 +42,12 @@ namespace GenericAirlines
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Employee>()
+                .HasMany(e => e.Language)
+                .WithRequired(e => e.Employee)
+                .HasForeignKey(e => e.Employee_id)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Employee>()
                 .HasMany(e => e.Pilot)
                 .WithRequired(e => e.Employee)
                 .HasForeignKey(e => e.Employee_id)

@@ -13,6 +13,7 @@ namespace GenericAirlines
         public Employee()
         {
             Attendant = new HashSet<Attendant>();
+            Language = new HashSet<Language>();
             Pilot = new HashSet<Pilot>();
         }
 
@@ -41,6 +42,9 @@ namespace GenericAirlines
         public virtual ICollection<Attendant> Attendant { get; set; }
 
         public virtual Plane Plane { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Language> Language { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pilot> Pilot { get; set; }
