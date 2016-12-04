@@ -12,13 +12,13 @@ namespace GenericAirlines
         {
         }
 
-        public virtual DbSet<Attendant> Attendant { get; set; }
-        public virtual DbSet<Employee> Employee { get; set; }
-        public virtual DbSet<Flight> Flight { get; set; }
-        public virtual DbSet<Language> Language { get; set; }
-        public virtual DbSet<Passenger> Passenger { get; set; }
-        public virtual DbSet<Pilot> Pilot { get; set; }
-        public virtual DbSet<Plane> Plane { get; set; }
+        public virtual DbSet<Attendant> Attendants { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Flight> Flights { get; set; }
+        public virtual DbSet<Language> Languages { get; set; }
+        public virtual DbSet<Passenger> Passengers { get; set; }
+        public virtual DbSet<Pilot> Pilots { get; set; }
+        public virtual DbSet<Plane> Planes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -36,19 +36,19 @@ namespace GenericAirlines
                 .IsUnicode(false);
 
             modelBuilder.Entity<Employee>()
-                .HasMany(e => e.Attendant)
+                .HasMany(e => e.Attendants)
                 .WithRequired(e => e.Employee)
                 .HasForeignKey(e => e.Employee_id)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Employee>()
-                .HasMany(e => e.Language)
+                .HasMany(e => e.Languages)
                 .WithRequired(e => e.Employee)
                 .HasForeignKey(e => e.Employee_id)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Employee>()
-                .HasMany(e => e.Pilot)
+                .HasMany(e => e.Pilots)
                 .WithRequired(e => e.Employee)
                 .HasForeignKey(e => e.Employee_id)
                 .WillCascadeOnDelete(false);
@@ -69,8 +69,8 @@ namespace GenericAirlines
                 .IsUnicode(false);
 
             modelBuilder.Entity<Flight>()
-                .HasMany(e => e.Passenger)
-                .WithMany(e => e.Flight)
+                .HasMany(e => e.Passengers)
+                .WithMany(e => e.Flights)
                 .Map(m => m.ToTable("Travels").MapLeftKey("Flight_id").MapRightKey("Passenger_id"));
 
             modelBuilder.Entity<Passenger>()
@@ -87,20 +87,16 @@ namespace GenericAirlines
                 .IsUnicode(false);
 
             modelBuilder.Entity<Plane>()
-                .Property(e => e.Seat_count)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Plane>()
                 .Property(e => e.Model)
                 .IsFixedLength();
 
             modelBuilder.Entity<Plane>()
-                .HasMany(e => e.Employee)
+                .HasMany(e => e.Employees)
                 .WithOptional(e => e.Plane)
                 .HasForeignKey(e => e.Plane_id);
 
             modelBuilder.Entity<Plane>()
-                .HasMany(e => e.Flight)
+                .HasMany(e => e.Flights)
                 .WithRequired(e => e.Plane)
                 .HasForeignKey(e => e.Plane_id)
                 .WillCascadeOnDelete(false);

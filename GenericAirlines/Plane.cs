@@ -12,16 +12,14 @@ namespace GenericAirlines
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Plane()
         {
-            Employee = new HashSet<Employee>();
-            Flight = new HashSet<Flight>();
+            Employees = new HashSet<Employee>();
+            Flights = new HashSet<Flight>();
         }
 
         [StringLength(8)]
         public string Id { get; set; }
 
-        [Required]
-        [StringLength(10)]
-        public string Seat_count { get; set; }
+        public int Seat_count { get; set; }
 
         [Required]
         [StringLength(10)]
@@ -31,9 +29,9 @@ namespace GenericAirlines
         public DateTime Manufactured { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employee { get; set; }
+        public virtual ICollection<Employee> Employees { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Flight> Flight { get; set; }
+        public virtual ICollection<Flight> Flights { get; set; }
     }
 }
