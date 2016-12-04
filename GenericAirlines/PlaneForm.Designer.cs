@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.PlanesDataGrid = new System.Windows.Forms.DataGridView();
+            this.AddPlane = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Model = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Seat_count = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Manufactured = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AddPlane = new System.Windows.Forms.Button();
+            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.PlanesDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,8 +48,10 @@
             this.Id,
             this.Model,
             this.Seat_count,
-            this.Manufactured});
-            this.PlanesDataGrid.Location = new System.Drawing.Point(27, 25);
+            this.Manufactured,
+            this.Edit,
+            this.Delete});
+            this.PlanesDataGrid.Location = new System.Drawing.Point(27, 30);
             this.PlanesDataGrid.MultiSelect = false;
             this.PlanesDataGrid.Name = "PlanesDataGrid";
             this.PlanesDataGrid.ReadOnly = true;
@@ -56,8 +60,19 @@
             this.PlanesDataGrid.ShowCellToolTips = false;
             this.PlanesDataGrid.ShowEditingIcon = false;
             this.PlanesDataGrid.ShowRowErrors = false;
-            this.PlanesDataGrid.Size = new System.Drawing.Size(405, 179);
+            this.PlanesDataGrid.Size = new System.Drawing.Size(604, 179);
             this.PlanesDataGrid.TabIndex = 0;
+            this.PlanesDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PlanesDataGrid_CellContentClick);
+            // 
+            // AddPlane
+            // 
+            this.AddPlane.Location = new System.Drawing.Point(27, 248);
+            this.AddPlane.Name = "AddPlane";
+            this.AddPlane.Size = new System.Drawing.Size(75, 23);
+            this.AddPlane.TabIndex = 1;
+            this.AddPlane.Text = "Add plane";
+            this.AddPlane.UseVisualStyleBackColor = true;
+            this.AddPlane.Click += new System.EventHandler(this.AddPlane_Click);
             // 
             // Id
             // 
@@ -83,15 +98,21 @@
             this.Manufactured.Name = "Manufactured";
             this.Manufactured.ReadOnly = true;
             // 
-            // AddPlane
+            // Edit
             // 
-            this.AddPlane.Location = new System.Drawing.Point(27, 248);
-            this.AddPlane.Name = "AddPlane";
-            this.AddPlane.Size = new System.Drawing.Size(75, 23);
-            this.AddPlane.TabIndex = 1;
-            this.AddPlane.Text = "Add plane";
-            this.AddPlane.UseVisualStyleBackColor = true;
-            this.AddPlane.Click += new System.EventHandler(this.AddPlane_Click);
+            this.Edit.HeaderText = "Edit";
+            this.Edit.Name = "Edit";
+            this.Edit.ReadOnly = true;
+            this.Edit.Text = "Edit";
+            this.Edit.UseColumnTextForButtonValue = true;
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "Delete";
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Text = "Delete";
+            this.Delete.UseColumnTextForButtonValue = true;
             // 
             // PlaneForm
             // 
@@ -108,12 +129,14 @@
         }
 
         #endregion
+        private System.Windows.Forms.Button AddPlane;
+        private System.Windows.Forms.DataGridView PlanesDataGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Model;
         private System.Windows.Forms.DataGridViewTextBoxColumn Seat_count;
         private System.Windows.Forms.DataGridViewTextBoxColumn Manufactured;
-        private System.Windows.Forms.Button AddPlane;
-        private System.Windows.Forms.DataGridView PlanesDataGrid;
+        private System.Windows.Forms.DataGridViewButtonColumn Edit;
+        private System.Windows.Forms.DataGridViewButtonColumn Delete;
     }
 }
 

@@ -12,9 +12,20 @@ namespace GenericAirlines
 {
     public partial class AddPlaneForm : Form
     {
+
         public AddPlaneForm()
         {
             InitializeComponent();
+        }
+
+        public AddPlaneForm(string id, string model, int seatCount, int manufactured)
+        {
+            PlaneId.Text = id;
+            PlaneSeatCount.Value = seatCount;
+            PlaneModel.Text = model;
+            PlaneManufactured.Value = manufactured;
+
+
         }
 
         private void ConfirmAddPlane_Click(object sender, EventArgs e)
