@@ -88,16 +88,16 @@
     <Compile Include="PlaneForm.Designer.cs">
       <DependentUpon>PlaneForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddPlaneForm.cs">
+    <Compile Include="AddEditPlaneForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddPlaneForm.Designer.cs">
-      <DependentUpon>AddPlaneForm.cs</DependentUpon>
+    <Compile Include="AddEditPlaneForm.Designer.cs">
+      <DependentUpon>AddEditPlaneForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddPlaneForm.resx">
-      <DependentUpon>AddPlaneForm.cs</DependentUpon>
+    <EmbeddedResource Include="AddEditPlaneForm.resx">
+      <DependentUpon>AddEditPlaneForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlaneForm.resx">
       <DependentUpon>PlaneForm.cs</DependentUpon>
@@ -131,6 +131,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
+    <Content Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

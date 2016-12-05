@@ -1,6 +1,6 @@
 ﻿namespace GenericAirlines
 {
-    partial class AddPlaneForm
+    partial class AddEditPlaneForm
     {
         /// <summary>
         /// Required designer variable.
@@ -43,6 +43,7 @@
             this.PlaneId.Name = "PlaneId";
             this.PlaneId.Size = new System.Drawing.Size(100, 20);
             this.PlaneId.TabIndex = 0;
+            this.PlaneId.Tag = "";
             // 
             // PlaneModel
             // 
@@ -60,7 +61,7 @@
             0,
             0});
             this.PlaneSeatCount.Name = "PlaneSeatCount";
-            this.PlaneSeatCount.Size = new System.Drawing.Size(120, 20);
+            this.PlaneSeatCount.Size = new System.Drawing.Size(100, 20);
             this.PlaneSeatCount.TabIndex = 4;
             // 
             // PlaneManufactured
@@ -77,7 +78,7 @@
             0,
             0});
             this.PlaneManufactured.Name = "PlaneManufactured";
-            this.PlaneManufactured.Size = new System.Drawing.Size(120, 20);
+            this.PlaneManufactured.Size = new System.Drawing.Size(100, 20);
             this.PlaneManufactured.TabIndex = 5;
             this.PlaneManufactured.Value = new decimal(new int[] {
             1900,
@@ -106,7 +107,8 @@
             this.Controls.Add(this.PlaneModel);
             this.Controls.Add(this.PlaneId);
             this.Name = "AddPlaneForm";
-            this.Text = "Form2";
+            this.Text = "Plane";
+            this.Shown += new System.EventHandler(this.AddPlaneForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.PlaneSeatCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlaneManufactured)).EndInit();
             this.ResumeLayout(false);

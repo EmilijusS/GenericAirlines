@@ -33,7 +33,7 @@ namespace GenericAirlines
 
         private void AddPlane_Click(object sender, EventArgs e)
         {
-            var addPlaneForm = new AddPlaneForm();
+            var addPlaneForm = new AddEditPlaneForm();
             addPlaneForm.FormClosed += (a, b) => UpdatePlanesDataGrid();
             addPlaneForm.Show();
         }
@@ -63,7 +63,7 @@ namespace GenericAirlines
 
         private void EditPlane(int rowIndex)
         {
-            var addPlaneForm = new AddPlaneForm((string) PlanesDataGrid.Rows[rowIndex].Cells[0].Value,
+            var addPlaneForm = new AddEditPlaneForm((string) PlanesDataGrid.Rows[rowIndex].Cells[0].Value,
                 (string) PlanesDataGrid.Rows[rowIndex].Cells[1].Value,
                 (int) PlanesDataGrid.Rows[rowIndex].Cells[2].Value,
                 (int) PlanesDataGrid.Rows[rowIndex].Cells[3].Value);
