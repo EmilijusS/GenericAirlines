@@ -36,6 +36,7 @@
             this.Manufactured = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Crew = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.PlanesDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +51,8 @@
             this.Seat_count,
             this.Manufactured,
             this.Edit,
-            this.Delete});
+            this.Delete,
+            this.Crew});
             this.PlanesDataGrid.Location = new System.Drawing.Point(27, 30);
             this.PlanesDataGrid.MultiSelect = false;
             this.PlanesDataGrid.Name = "PlanesDataGrid";
@@ -60,13 +62,13 @@
             this.PlanesDataGrid.ShowCellToolTips = false;
             this.PlanesDataGrid.ShowEditingIcon = false;
             this.PlanesDataGrid.ShowRowErrors = false;
-            this.PlanesDataGrid.Size = new System.Drawing.Size(604, 179);
+            this.PlanesDataGrid.Size = new System.Drawing.Size(685, 179);
             this.PlanesDataGrid.TabIndex = 0;
             this.PlanesDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PlanesDataGrid_CellContentClick);
             // 
             // AddPlane
             // 
-            this.AddPlane.Location = new System.Drawing.Point(27, 248);
+            this.AddPlane.Location = new System.Drawing.Point(27, 215);
             this.AddPlane.Name = "AddPlane";
             this.AddPlane.Size = new System.Drawing.Size(75, 23);
             this.AddPlane.TabIndex = 1;
@@ -79,6 +81,7 @@
             this.Id.HeaderText = "Id";
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
+            this.Id.Width = 82;
             // 
             // Model
             // 
@@ -114,11 +117,20 @@
             this.Delete.Text = "Delete";
             this.Delete.UseColumnTextForButtonValue = true;
             // 
+            // Crew
+            // 
+            this.Crew.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Crew.HeaderText = "Crew";
+            this.Crew.Name = "Crew";
+            this.Crew.ReadOnly = true;
+            this.Crew.Text = "Crew";
+            this.Crew.UseColumnTextForButtonValue = true;
+            // 
             // PlaneForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(951, 541);
+            this.ClientSize = new System.Drawing.Size(732, 249);
             this.Controls.Add(this.AddPlane);
             this.Controls.Add(this.PlanesDataGrid);
             this.Name = "PlaneForm";
@@ -137,6 +149,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Manufactured;
         private System.Windows.Forms.DataGridViewButtonColumn Edit;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
+        private System.Windows.Forms.DataGridViewButtonColumn Crew;
     }
 }
 

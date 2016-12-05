@@ -12,6 +12,10 @@ namespace GenericAirlines
 {
     public partial class PlaneForm : Form
     {
+        private readonly int EditColumnIndex = 4;
+        private readonly int DeleteColumnIndex = 5;
+        private readonly int CrewColumnIndex = 6;
+
         public PlaneForm()
         {
             InitializeComponent();
@@ -42,11 +46,14 @@ namespace GenericAirlines
         {
             if (e.RowIndex >= 0)
             {
-                if (e.ColumnIndex == 4)
+                if (e.ColumnIndex == EditColumnIndex)
                     EditPlane(e.RowIndex);
 
-                if (e.ColumnIndex == 5)
+                if (e.ColumnIndex == DeleteColumnIndex)
                     DeletePlane(e.RowIndex);
+
+                //if (e.ColumnIndex == CrewColumnIndex)
+                    //Crew(e.RowIndex);
             }
         }
 
@@ -71,5 +78,7 @@ namespace GenericAirlines
             addPlaneForm.FormClosed += (a, b) => UpdatePlanesDataGrid();
             addPlaneForm.Show();
         }
+
+
     }
 }
