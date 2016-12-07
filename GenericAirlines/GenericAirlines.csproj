@@ -73,6 +73,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddPilotForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPilotForm.Designer.cs">
+      <DependentUpon>AddPilotForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AirlinesContext.cs" />
     <Compile Include="Attendant.cs" />
     <Compile Include="Database.cs" />
@@ -110,6 +116,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddEditPlaneForm.resx">
       <DependentUpon>AddEditPlaneForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPilotForm.resx">
+      <DependentUpon>AddPilotForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeesForm.resx">
       <DependentUpon>EmployeesForm.cs</DependentUpon>

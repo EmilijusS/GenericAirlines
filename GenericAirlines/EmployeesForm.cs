@@ -39,5 +39,11 @@ namespace GenericAirlines
             }
         }
 
+        private void AddPilot_Click(object sender, EventArgs e)
+        {
+            var addPilotForm = new AddPilotForm();
+            addPilotForm.FormClosed += (a, b) => UpdateEmployeesDataGrid();
+            addPilotForm.Show();
+        }
     }
 }
