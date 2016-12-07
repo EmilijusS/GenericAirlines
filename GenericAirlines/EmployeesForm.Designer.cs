@@ -28,18 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.EmployeesDataGrid = new System.Windows.Forms.DataGridView();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.AttendantId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AttendantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AttendantSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AttendantPersonalId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AttendantBirthDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AttendantGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AttendantHeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PilotsDataGrid = new System.Windows.Forms.DataGridView();
             this.PilotId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PilotName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PilotSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,17 +36,28 @@
             this.PilotBirthDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PilotLicense = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PilotLicenseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.EmployeesDataGrid)).BeginInit();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.AttendantsDataGrid = new System.Windows.Forms.DataGridView();
+            this.AttendantId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AttendantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AttendantSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AttendantPersonalId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AttendantBirthDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AttendantGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AttendantHeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.PilotsDataGrid)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AttendantsDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // EmployeesDataGrid
+            // PilotsDataGrid
             // 
-            this.EmployeesDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.EmployeesDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PilotsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PilotsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PilotId,
             this.PilotName,
             this.PilotSurname,
@@ -65,107 +65,12 @@
             this.PilotBirthDate,
             this.PilotLicense,
             this.PilotLicenseDate});
-            this.EmployeesDataGrid.Location = new System.Drawing.Point(8, 3);
-            this.EmployeesDataGrid.Name = "EmployeesDataGrid";
-            this.EmployeesDataGrid.ReadOnly = true;
-            this.EmployeesDataGrid.RowHeadersVisible = false;
-            this.EmployeesDataGrid.Size = new System.Drawing.Size(703, 150);
-            this.EmployeesDataGrid.TabIndex = 0;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(731, 332);
-            this.tabControl1.TabIndex = 1;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage1.Controls.Add(this.EmployeesDataGrid);
-            this.tabPage1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(723, 306);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Pilots";
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage2.Controls.Add(this.dataGridView1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(723, 306);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Attendants";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.AttendantId,
-            this.AttendantName,
-            this.AttendantSurname,
-            this.AttendantPersonalId,
-            this.AttendantBirthDate,
-            this.AttendantGender,
-            this.AttendantHeight});
-            this.dataGridView1.Location = new System.Drawing.Point(8, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(703, 150);
-            this.dataGridView1.TabIndex = 2;
-            // 
-            // AttendantId
-            // 
-            this.AttendantId.HeaderText = "Id";
-            this.AttendantId.Name = "AttendantId";
-            this.AttendantId.ReadOnly = true;
-            // 
-            // AttendantName
-            // 
-            this.AttendantName.HeaderText = "Name";
-            this.AttendantName.Name = "AttendantName";
-            this.AttendantName.ReadOnly = true;
-            // 
-            // AttendantSurname
-            // 
-            this.AttendantSurname.HeaderText = "Surname";
-            this.AttendantSurname.Name = "AttendantSurname";
-            this.AttendantSurname.ReadOnly = true;
-            // 
-            // AttendantPersonalId
-            // 
-            this.AttendantPersonalId.HeaderText = "Personal id";
-            this.AttendantPersonalId.Name = "AttendantPersonalId";
-            this.AttendantPersonalId.ReadOnly = true;
-            // 
-            // AttendantBirthDate
-            // 
-            this.AttendantBirthDate.HeaderText = "Birth date";
-            this.AttendantBirthDate.Name = "AttendantBirthDate";
-            this.AttendantBirthDate.ReadOnly = true;
-            // 
-            // AttendantGender
-            // 
-            this.AttendantGender.HeaderText = "Gender";
-            this.AttendantGender.Name = "AttendantGender";
-            this.AttendantGender.ReadOnly = true;
-            // 
-            // AttendantHeight
-            // 
-            this.AttendantHeight.HeaderText = "Height";
-            this.AttendantHeight.Name = "AttendantHeight";
-            this.AttendantHeight.ReadOnly = true;
+            this.PilotsDataGrid.Location = new System.Drawing.Point(8, 3);
+            this.PilotsDataGrid.Name = "PilotsDataGrid";
+            this.PilotsDataGrid.ReadOnly = true;
+            this.PilotsDataGrid.RowHeadersVisible = false;
+            this.PilotsDataGrid.Size = new System.Drawing.Size(703, 150);
+            this.PilotsDataGrid.TabIndex = 0;
             // 
             // PilotId
             // 
@@ -209,6 +114,100 @@
             this.PilotLicenseDate.Name = "PilotLicenseDate";
             this.PilotLicenseDate.ReadOnly = true;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(731, 332);
+            this.tabControl1.TabIndex = 1;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.PilotsDataGrid);
+            this.tabPage1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(723, 306);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Pilots";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.AttendantsDataGrid);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(723, 306);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Attendants";
+            // 
+            // AttendantsDataGrid
+            // 
+            this.AttendantsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AttendantsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.AttendantId,
+            this.AttendantName,
+            this.AttendantSurname,
+            this.AttendantPersonalId,
+            this.AttendantBirthDate,
+            this.AttendantGender,
+            this.AttendantHeight});
+            this.AttendantsDataGrid.Location = new System.Drawing.Point(8, 3);
+            this.AttendantsDataGrid.Name = "AttendantsDataGrid";
+            this.AttendantsDataGrid.ReadOnly = true;
+            this.AttendantsDataGrid.RowHeadersVisible = false;
+            this.AttendantsDataGrid.Size = new System.Drawing.Size(703, 150);
+            this.AttendantsDataGrid.TabIndex = 2;
+            // 
+            // AttendantId
+            // 
+            this.AttendantId.HeaderText = "Id";
+            this.AttendantId.Name = "AttendantId";
+            this.AttendantId.ReadOnly = true;
+            // 
+            // AttendantName
+            // 
+            this.AttendantName.HeaderText = "Name";
+            this.AttendantName.Name = "AttendantName";
+            this.AttendantName.ReadOnly = true;
+            // 
+            // AttendantSurname
+            // 
+            this.AttendantSurname.HeaderText = "Surname";
+            this.AttendantSurname.Name = "AttendantSurname";
+            this.AttendantSurname.ReadOnly = true;
+            // 
+            // AttendantPersonalId
+            // 
+            this.AttendantPersonalId.HeaderText = "Personal id";
+            this.AttendantPersonalId.Name = "AttendantPersonalId";
+            this.AttendantPersonalId.ReadOnly = true;
+            // 
+            // AttendantBirthDate
+            // 
+            this.AttendantBirthDate.HeaderText = "Birth date";
+            this.AttendantBirthDate.Name = "AttendantBirthDate";
+            this.AttendantBirthDate.ReadOnly = true;
+            // 
+            // AttendantGender
+            // 
+            this.AttendantGender.HeaderText = "Gender";
+            this.AttendantGender.Name = "AttendantGender";
+            this.AttendantGender.ReadOnly = true;
+            // 
+            // AttendantHeight
+            // 
+            this.AttendantHeight.HeaderText = "Height";
+            this.AttendantHeight.Name = "AttendantHeight";
+            this.AttendantHeight.ReadOnly = true;
+            // 
             // EmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -217,18 +216,18 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "EmployeesForm";
             this.Text = "EmployeesForm";
-            ((System.ComponentModel.ISupportInitialize)(this.EmployeesDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PilotsDataGrid)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AttendantsDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView EmployeesDataGrid;
+        private System.Windows.Forms.DataGridView PilotsDataGrid;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -239,7 +238,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PilotBirthDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn PilotLicense;
         private System.Windows.Forms.DataGridViewTextBoxColumn PilotLicenseDate;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView AttendantsDataGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn AttendantId;
         private System.Windows.Forms.DataGridViewTextBoxColumn AttendantName;
         private System.Windows.Forms.DataGridViewTextBoxColumn AttendantSurname;
