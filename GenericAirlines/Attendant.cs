@@ -7,19 +7,12 @@ namespace GenericAirlines
     using System.Data.Entity.Spatial;
 
     [Table("Attendant")]
-    public partial class Attendant
+    public partial class Attendant : Employee
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Id { get; set; }
-
         public byte Height { get; set; }
 
         [Required]
         [StringLength(6)]
         public string Gender { get; set; }
-
-        public int Employee_id { get; set; }
-
-        public virtual Employee Employee { get; set; }
     }
 }

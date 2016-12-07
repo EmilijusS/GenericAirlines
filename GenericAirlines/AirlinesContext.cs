@@ -36,19 +36,7 @@ namespace GenericAirlines
                 .IsUnicode(false);
 
             modelBuilder.Entity<Employee>()
-                .HasMany(e => e.Attendants)
-                .WithRequired(e => e.Employee)
-                .HasForeignKey(e => e.Employee_id)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Employee>()
                 .HasMany(e => e.Languages)
-                .WithRequired(e => e.Employee)
-                .HasForeignKey(e => e.Employee_id)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Employee>()
-                .HasMany(e => e.Pilots)
                 .WithRequired(e => e.Employee)
                 .HasForeignKey(e => e.Employee_id)
                 .WillCascadeOnDelete(false);

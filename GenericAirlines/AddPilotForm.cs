@@ -17,9 +17,22 @@ namespace GenericAirlines
             InitializeComponent();
         }
 
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        private void ConfirmButton_Click(object sender, EventArgs e)
         {
-
+            using (var db = new AirlinesContext())
+            {
+                var pilot = db.Pilots.Create();
+                var employee = db.Employees.Create();
+                employee.Name = NameTextBox.Text;
+                employee.Surname = SurnameTextBox.Text;
+                employee.PersonalId = PersonalIdTextBox.Text;
+                employee.Birth = BirthDatePicker.Value;
+                pilot.License = LicenseTextBox.Text;
+                pilot.License_date = LicenseDatePicker.Value;
+                //?????
+                //db.Planes.Add(plane);
+                db.SaveChanges();
+            }
         }
     }
 }
