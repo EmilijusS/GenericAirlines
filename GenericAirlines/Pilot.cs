@@ -15,5 +15,6 @@ namespace GenericAirlines
 
         [Column(TypeName = "date")]
         public DateTime License_date { get; set; }
+
     }
 }

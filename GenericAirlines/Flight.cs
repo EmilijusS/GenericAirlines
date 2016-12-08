@@ -12,10 +12,10 @@ namespace GenericAirlines
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Flight()
         {
-            Passengers = new HashSet<Passenger>();
+            Employee = new HashSet<Employee>();
+            Passenger = new HashSet<Passenger>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         [Column(TypeName = "datetime2")]
@@ -36,9 +36,12 @@ namespace GenericAirlines
         [StringLength(8)]
         public string Plane_id { get; set; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employee> Employee { get; set; }
+
         public virtual Plane Plane { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Passenger> Passengers { get; set; }
+        public virtual ICollection<Passenger> Passenger { get; set; }
     }
 }

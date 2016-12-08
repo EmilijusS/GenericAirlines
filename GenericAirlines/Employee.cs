@@ -9,15 +9,6 @@ namespace GenericAirlines
     [Table("Employee")]
     public partial class Employee
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employee()
-        {
-            Attendants = new HashSet<Attendant>();
-            Languages = new HashSet<Language>();
-            Pilots = new HashSet<Pilot>();
-        }
-
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         [Required]
@@ -28,25 +19,11 @@ namespace GenericAirlines
         [StringLength(50)]
         public string Surname { get; set; }
 
-        [Required]
-        [StringLength(11)]
-        public string PersonalId { get; set; }
-
         [Column(TypeName = "date")]
         public DateTime Birth { get; set; }
 
-        [StringLength(8)]
-        public string Plane_id { get; set; }
+        public int? Flight_id { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Attendant> Attendants { get; set; }
-
-        public virtual Plane Plane { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Language> Languages { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pilot> Pilots { get; set; }
+        public virtual Flight Flight { get; set; }
     }
 }
