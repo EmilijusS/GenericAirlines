@@ -47,13 +47,13 @@ namespace GenericAirlines
         {
             using (var db = new AirlinesContext())
             {
-                var plane = db.Planes.Create();
-                plane.Id = PlaneId.Text;
-                plane.Seat_count = (int)PlaneSeatCount.Value;
-                plane.Model = PlaneModel.Text;
-                plane.Manufactured = new DateTime((int)PlaneManufactured.Value, 1, 1);
-                db.Planes.Add(plane);
-                db.SaveChanges();
+                //var plane = db.Planes.Create();
+                //plane.Id = PlaneId.Text;
+                //plane.Seat_count = (int)PlaneSeatCount.Value;
+                //plane.Model = PlaneModel.Text;
+                //plane.Manufactured = new DateTime((int)PlaneManufactured.Value, 1, 1);
+                //db.Planes.Add(plane);
+                //db.SaveChanges();
             }
         }
 
@@ -61,11 +61,11 @@ namespace GenericAirlines
         {
             using (var db = new AirlinesContext())
             {
-                var plane = db.Planes.Find(PlaneId.Text);
-                plane.Seat_count = (int)PlaneSeatCount.Value;
-                plane.Model = PlaneModel.Text;
-                plane.Manufactured = new DateTime((int)PlaneManufactured.Value, 1, 1);
-                db.SaveChanges();
+                //var plane = db.Planes.Find(PlaneId.Text);
+                //plane.Seat_count = (int)PlaneSeatCount.Value;
+                //plane.Model = PlaneModel.Text;
+                //plane.Manufactured = new DateTime((int)PlaneManufactured.Value, 1, 1);
+                //db.SaveChanges();
             }
         }
 

@@ -25,14 +25,6 @@ namespace GenericAirlines
                 .Property(e => e.Gender)
                 .IsFixedLength();
 
-            modelBuilder.Entity<Employee>()
-                .HasOptional(e => e.Attendant)
-                .WithRequired(e => e.Employee);
-
-            modelBuilder.Entity<Employee>()
-                .HasOptional(e => e.Pilot)
-                .WithRequired(e => e.Employee);
-
             modelBuilder.Entity<Flight>()
                 .Property(e => e.Origin)
                 .IsFixedLength()

@@ -21,17 +21,17 @@ namespace GenericAirlines
         {
             using (var db = new AirlinesContext())
             {
-                var pilot = db.Pilots.Create();
-                var employee = db.Employees.Create();
-                employee.Name = NameTextBox.Text;
-                employee.Surname = SurnameTextBox.Text;
-                employee.PersonalId = PersonalIdTextBox.Text;
-                employee.Birth = BirthDatePicker.Value;
-                pilot.License = LicenseTextBox.Text;
-                pilot.License_date = LicenseDatePicker.Value;
-                //?????
-                //db.Planes.Add(plane);
-                db.SaveChanges();
+                //var pilot = db.Pilots.Create();
+                //var employee = db.Employees.Create();
+                //employee.Name = NameTextBox.Text;
+                //employee.Surname = SurnameTextBox.Text;
+                //employee.PersonalId = PersonalIdTextBox.Text;
+                //employee.Birth = BirthDatePicker.Value;
+                //pilot.License = LicenseTextBox.Text;
+                //pilot.License_date = LicenseDatePicker.Value;
+                ////?????
+                ////db.Planes.Add(plane);
+                //db.SaveChanges();
             }
         }
     }

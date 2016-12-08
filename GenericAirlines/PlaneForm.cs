@@ -19,26 +19,12 @@ namespace GenericAirlines
         public PlaneForm()
         {
             InitializeComponent();
-            UpdatePlanesDataGrid();
         }
 
-        private void UpdatePlanesDataGrid()
-        {
-            PlanesDataGrid.Rows.Clear();
-
-            using (var db = new AirlinesContext())
-            {
-                foreach (var p in db.Planes)
-                {
-                    PlanesDataGrid.Rows.Add(p.Id, p.Model, p.Seat_count, p.Manufactured.Year);
-                }
-            }
-        }
 
         private void AddPlane_Click(object sender, EventArgs e)
         {
             var addPlaneForm = new AddEditPlaneForm();
-            addPlaneForm.FormClosed += (a, b) => UpdatePlanesDataGrid();
             addPlaneForm.Show();
         }
 
@@ -59,26 +45,34 @@ namespace GenericAirlines
 
         private void DeletePlane(int rowIndex)
         {
-            using (var db = new AirlinesContext())
-            {
-                db.Planes.Remove(db.Planes.Find(PlanesDataGrid.Rows[rowIndex].Cells[0].Value));
-                db.SaveChanges();
-            }
-
-            UpdatePlanesDataGrid();
+            //using (var db = new AirlinesContext())
+            //{
+            //    db.Plane.Remove(db.Plane.Find(PlanesDataGrid.Rows[rowIndex].Cells[0].Value));
+            //    db.SaveChanges();
+            //};
         }
 
         private void EditPlane(int rowIndex)
         {
-            var addPlaneForm = new AddEditPlaneForm((string) PlanesDataGrid.Rows[rowIndex].Cells[0].Value,
-                (string) PlanesDataGrid.Rows[rowIndex].Cells[1].Value,
-                (int) PlanesDataGrid.Rows[rowIndex].Cells[2].Value,
-                (int) PlanesDataGrid.Rows[rowIndex].Cells[3].Value);
+            //var addPlaneForm = new AddEditPlaneForm((string) PlanesDataGrid.Rows[rowIndex].Cells[0].Value,
+            //    (string) PlanesDataGrid.Rows[rowIndex].Cells[1].Value,
+            //    (int) PlanesDataGrid.Rows[rowIndex].Cells[2].Value,
+            //    (int) PlanesDataGrid.Rows[rowIndex].Cells[3].Value);
 
-            addPlaneForm.FormClosed += (a, b) => UpdatePlanesDataGrid();
-            addPlaneForm.Show();
+            //addPlaneForm.FormClosed += (a, b) => UpdatePlanesDataGrid();
+            //addPlaneForm.Show();
         }
 
+        private void PlaneForm_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'databaseDataSet.Plane' table. You can move, or remove it, as needed.
+            this.planeTableAdapter.Fill(this.databaseDataSet.Plane);
 
+        }
+
+        private void PlaneDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
