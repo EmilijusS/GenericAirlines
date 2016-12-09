@@ -24,6 +24,10 @@ namespace GenericAirlines
 
         public int? Flight_id { get; set; }
 
+        public virtual Attendant Attendant { get; set; }
+
         public virtual Flight Flight { get; set; }
+
+        public virtual Pilot Pilot { get; set; }
     }
 }

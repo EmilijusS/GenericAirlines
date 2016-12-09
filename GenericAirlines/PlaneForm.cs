@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,8 @@ namespace GenericAirlines
 {
     public partial class PlaneForm : Form
     {
-        private readonly int EditColumnIndex = 4;
-        private readonly int DeleteColumnIndex = 5;
-        private readonly int CrewColumnIndex = 6;
+        private readonly int EditColumnIndex = 3;
+        private readonly int DeleteColumnIndex = 4;
 
         public PlaneForm()
         {
@@ -25,10 +25,11 @@ namespace GenericAirlines
         private void AddPlane_Click(object sender, EventArgs e)
         {
             var addPlaneForm = new AddEditPlaneForm();
+            addPlaneForm.FormClosed += (a, b) => PlaneForm_Load(a, b);
             addPlaneForm.Show();
         }
 
-        private void PlanesDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void PlaneDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -37,42 +38,42 @@ namespace GenericAirlines
 
                 if (e.ColumnIndex == DeleteColumnIndex)
                     DeletePlane(e.RowIndex);
-
-                //if (e.ColumnIndex == CrewColumnIndex)
-                    //Crew(e.RowIndex);
             }
         }
 
         private void DeletePlane(int rowIndex)
         {
-            //using (var db = new AirlinesContext())
-            //{
-            //    db.Plane.Remove(db.Plane.Find(PlanesDataGrid.Rows[rowIndex].Cells[0].Value));
-            //    db.SaveChanges();
-            //};
+            var d = (DataRowView)PlaneDataGrid.Rows[rowIndex].DataBoundItem;
+
+            using (var db = new AirlinesContext())
+            {
+                db.Planes.Remove(db.Planes.Find(d.Row[0]));
+                db.SaveChanges();
+            }
+
+            PlaneForm_Load(this, new EventArgs());
         }
 
         private void EditPlane(int rowIndex)
         {
-            //var addPlaneForm = new AddEditPlaneForm((string) PlanesDataGrid.Rows[rowIndex].Cells[0].Value,
-            //    (string) PlanesDataGrid.Rows[rowIndex].Cells[1].Value,
-            //    (int) PlanesDataGrid.Rows[rowIndex].Cells[2].Value,
-            //    (int) PlanesDataGrid.Rows[rowIndex].Cells[3].Value);
+            Plane plane;
+            var d = (DataRowView)PlaneDataGrid.Rows[rowIndex].DataBoundItem;
 
-            //addPlaneForm.FormClosed += (a, b) => UpdatePlanesDataGrid();
-            //addPlaneForm.Show();
+            using (var db = new AirlinesContext())
+            {
+                plane = db.Planes.Find(d.Row[0]);
+            }
+                
+            var editPlaneForm = new AddEditPlaneForm(plane);
+
+            editPlaneForm.FormClosed += (a, b) => PlaneForm_Load(a, b);
+            editPlaneForm.Show();
         }
 
         private void PlaneForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'databaseDataSet.Plane' table. You can move, or remove it, as needed.
             this.planeTableAdapter.Fill(this.databaseDataSet.Plane);
-
-        }
-
-        private void PlaneDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

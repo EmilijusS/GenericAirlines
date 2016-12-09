@@ -12,8 +12,8 @@ namespace GenericAirlines
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Flight()
         {
-            Employee = new HashSet<Employee>();
-            Passenger = new HashSet<Passenger>();
+            Employees = new HashSet<Employee>();
+            Passengers = new HashSet<Passenger>();
         }
 
         public int Id { get; set; }
@@ -33,15 +33,15 @@ namespace GenericAirlines
         public string Destination { get; set; }
 
         [Required]
-        [StringLength(8)]
+        [StringLength(10)]
         public string Plane_id { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employee { get; set; }
+        public virtual ICollection<Employee> Employees { get; set; }
 
         public virtual Plane Plane { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Passenger> Passenger { get; set; }
+        public virtual ICollection<Passenger> Passengers { get; set; }
     }
 }

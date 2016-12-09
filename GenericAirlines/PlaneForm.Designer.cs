@@ -89,53 +89,62 @@
             this.PlaneDataGrid.Name = "PlaneDataGrid";
             this.PlaneDataGrid.ReadOnly = true;
             this.PlaneDataGrid.RowHeadersVisible = false;
-            this.PlaneDataGrid.Size = new System.Drawing.Size(393, 209);
+            this.PlaneDataGrid.Size = new System.Drawing.Size(427, 209);
             this.PlaneDataGrid.TabIndex = 2;
             this.PlaneDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PlaneDataGrid_CellContentClick);
             // 
             // idDataGridViewTextBoxColumn
             // 
+            this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.FillWeight = 60F;
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 70;
             // 
             // seatcountDataGridViewTextBoxColumn
             // 
+            this.seatcountDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.seatcountDataGridViewTextBoxColumn.DataPropertyName = "Seat_count";
+            this.seatcountDataGridViewTextBoxColumn.FillWeight = 90F;
             this.seatcountDataGridViewTextBoxColumn.HeaderText = "Seat count";
             this.seatcountDataGridViewTextBoxColumn.Name = "seatcountDataGridViewTextBoxColumn";
             this.seatcountDataGridViewTextBoxColumn.ReadOnly = true;
-            this.seatcountDataGridViewTextBoxColumn.Width = 90;
             // 
             // modelDataGridViewTextBoxColumn
             // 
             this.modelDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.modelDataGridViewTextBoxColumn.DataPropertyName = "Model";
+            this.modelDataGridViewTextBoxColumn.FillWeight = 150F;
             this.modelDataGridViewTextBoxColumn.HeaderText = "Model";
             this.modelDataGridViewTextBoxColumn.Name = "modelDataGridViewTextBoxColumn";
             this.modelDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Edit
             // 
+            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Edit.FillWeight = 80F;
             this.Edit.HeaderText = "Edit";
             this.Edit.Name = "Edit";
             this.Edit.ReadOnly = true;
-            this.Edit.Width = 55;
+            this.Edit.Text = "Edit";
+            this.Edit.UseColumnTextForButtonValue = true;
             // 
             // Delete
             // 
+            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Delete.FillWeight = 80F;
             this.Delete.HeaderText = "Delete";
             this.Delete.Name = "Delete";
             this.Delete.ReadOnly = true;
-            this.Delete.Width = 55;
+            this.Delete.Text = "Delete";
+            this.Delete.UseColumnTextForButtonValue = true;
             // 
             // PlaneForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(394, 249);
+            this.ClientSize = new System.Drawing.Size(428, 249);
             this.Controls.Add(this.PlaneDataGrid);
             this.Controls.Add(this.AddPlane);
             this.Name = "PlaneForm";

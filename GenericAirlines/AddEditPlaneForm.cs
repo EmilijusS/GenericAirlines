@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Migrations;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
@@ -13,60 +14,38 @@ namespace GenericAirlines
 {
     public partial class AddEditPlaneForm : Form
     {
-        private bool IsEdited = false;
 
         public AddEditPlaneForm()
         {
             InitializeComponent();
         }
 
-        public AddEditPlaneForm(string id, string model, int seatCount, int manufactured)
+        public AddEditPlaneForm(Plane plane)
         {
             InitializeComponent();
 
-            PlaneId.Text = id;
+            PlaneId.Text = plane.Id;
             PlaneId.Enabled = false;
-            PlaneSeatCount.Value = seatCount;
-            PlaneModel.Text = model;
-            PlaneManufactured.Value = manufactured;
-            IsEdited = true;
+            PlaneSeatCount.Value = plane.Seat_count;
+            PlaneModel.Text = plane.Model;
         }
 
         private void ConfirmAddPlane_Click(object sender, EventArgs e)
         {
+            using (var db = new AirlinesContext())
+            {
+                var plane = db.Planes.Create();
+                plane.Id = PlaneId.Text;
+                plane.Seat_count = (int)PlaneSeatCount.Value;
+                plane.Model = PlaneModel.Text;
 
-            if (!IsEdited)
-                Add();
-            else
-                Edit();
+                if(!PlaneId.Enabled || db.Planes.Find(plane.Id) == null)
+                    db.Planes.AddOrUpdate(plane);
+
+                db.SaveChanges();
+            }
 
             this.Close();
-        }
-
-        private void Add()
-        {
-            using (var db = new AirlinesContext())
-            {
-                //var plane = db.Planes.Create();
-                //plane.Id = PlaneId.Text;
-                //plane.Seat_count = (int)PlaneSeatCount.Value;
-                //plane.Model = PlaneModel.Text;
-                //plane.Manufactured = new DateTime((int)PlaneManufactured.Value, 1, 1);
-                //db.Planes.Add(plane);
-                //db.SaveChanges();
-            }
-        }
-
-        private void Edit()
-        {
-            using (var db = new AirlinesContext())
-            {
-                //var plane = db.Planes.Find(PlaneId.Text);
-                //plane.Seat_count = (int)PlaneSeatCount.Value;
-                //plane.Model = PlaneModel.Text;
-                //plane.Manufactured = new DateTime((int)PlaneManufactured.Value, 1, 1);
-                //db.SaveChanges();
-            }
         }
 
         private void AddPlaneForm_Shown(object sender, EventArgs e)

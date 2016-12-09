@@ -7,7 +7,7 @@ namespace GenericAirlines
     using System.Data.Entity.Spatial;
 
     [Table("Pilot")]
-    public partial class Pilot : Employee
+    public partial class Pilot
     {
         [Required]
         [StringLength(10)]
@@ -16,5 +16,10 @@ namespace GenericAirlines
         [Column(TypeName = "date")]
         public DateTime License_date { get; set; }
 
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int Employee_id { get; set; }
+
+        public virtual Employee Employee { get; set; }
     }
 }
