@@ -29,5 +29,10 @@ namespace GenericAirlines
             addPilotForm.FormClosed += (a, b) => UpdateEmployeesDataGrid();
             addPilotForm.Show();
         }
+
+        private void EmployeesForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

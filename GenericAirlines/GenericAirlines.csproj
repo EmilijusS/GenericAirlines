@@ -79,25 +79,50 @@
     <Compile Include="AddPilotForm.Designer.cs">
       <DependentUpon>AddPilotForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AirlinesContext.cs" />
-    <Compile Include="Attendant.cs" />
-    <Compile Include="Database.cs" />
+    <Compile Include="AirlinesModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AirlinesModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AirlinesModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AirlinesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AirlinesModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AirlinesModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Attendant.cs">
+      <DependentUpon>AirlinesModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Employee.cs" />
+    <Compile Include="Employee.cs">
+      <DependentUpon>AirlinesModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EmployeesForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EmployeesForm.Designer.cs">
       <DependentUpon>EmployeesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Flight.cs" />
-    <Compile Include="Passenger.cs" />
-    <Compile Include="Pilot.cs" />
-    <Compile Include="Plane.cs" />
+    <Compile Include="Flight.cs">
+      <DependentUpon>AirlinesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Passenger.cs">
+      <DependentUpon>AirlinesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pilot.cs">
+      <DependentUpon>AirlinesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Plane.cs">
+      <DependentUpon>AirlinesModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="PlaneCrewForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +167,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EntityDeploy Include="AirlinesModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AirlinesModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="AirlinesModel.edmx.diagram">
+      <DependentUpon>AirlinesModel.edmx</DependentUpon>
+    </None>
     <None Include="App.Config" />
     <None Include="DatabaseDataSet.xsc">
       <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
@@ -155,8 +187,6 @@
       <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\AirlinesContext.datasource" />
-    <None Include="Properties\DataSources\Pilot.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -168,6 +198,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AirlinesModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AirlinesModel.edmx</DependentUpon>
+      <LastGenOutput>AirlinesModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="AirlinesModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AirlinesModel.edmx</DependentUpon>
+      <LastGenOutput>AirlinesModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Database.mdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -188,6 +228,15 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
