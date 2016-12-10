@@ -25,11 +25,9 @@ namespace GenericAirlines
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Attendant> Attendants { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Flight> Flights { get; set; }
         public virtual DbSet<Passenger> Passengers { get; set; }
-        public virtual DbSet<Pilot> Pilots { get; set; }
         public virtual DbSet<Plane> Planes { get; set; }
     }
 }

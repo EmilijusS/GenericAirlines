@@ -15,23 +15,22 @@ namespace GenericAirlines
         public EmployeesForm()
         {
             InitializeComponent();
-            UpdateEmployeesDataGrid();
         }
 
-        private void UpdateEmployeesDataGrid()
-        {
-
-        }
 
         private void AddPilot_Click(object sender, EventArgs e)
         {
             var addPilotForm = new AddPilotForm();
-            addPilotForm.FormClosed += (a, b) => UpdateEmployeesDataGrid();
+            addPilotForm.FormClosed += (a, b) => EmployeesForm_Load(a, b);
             addPilotForm.Show();
         }
 
         private void EmployeesForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'databaseDataSet.AttendantInfo' table. You can move, or remove it, as needed.
+            this.attendantInfoTableAdapter.Fill(this.databaseDataSet.AttendantInfo);
+            // TODO: This line of code loads data into the 'databaseDataSet.PilotInfo' table. You can move, or remove it, as needed.
+            this.pilotInfoTableAdapter.Fill(this.databaseDataSet.PilotInfo);
 
         }
     }

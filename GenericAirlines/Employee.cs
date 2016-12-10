@@ -25,8 +25,6 @@ namespace GenericAirlines
         public string Surname { get; set; }
         public System.DateTime Birth { get; set; }
     
-        public virtual Attendant Attendant { get; set; }
-        public virtual Pilot Pilot { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Flight> Flights { get; set; }
     }

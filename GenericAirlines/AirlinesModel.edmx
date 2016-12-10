@@ -200,14 +200,9 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Attendant">
-          <Key>
-            <PropertyRef Name="Employee_id" />
-          </Key>
+        <EntityType Name="Attendant" BaseType="DatabaseModel.Employee">
           <Property Name="Height" Type="Byte" Nullable="false" />
           <Property Name="Gender" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Employee_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Attendant_ToEmployee" FromRole="Attendant" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -217,8 +212,6 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Birth" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Attendant" Relationship="Self.FK_Attendant_ToEmployee" FromRole="Employee" ToRole="Attendant" />
-          <NavigationProperty Name="Pilot" Relationship="Self.FK_Pilot_ToEmployee" FromRole="Employee" ToRole="Pilot" />
           <NavigationProperty Name="Flights" Relationship="Self.Employee_Flight" FromRole="Employee" ToRole="Flight" />
         </EntityType>
         <EntityType Name="Flight">
@@ -244,14 +237,9 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Flights" Relationship="Self.Ticket" FromRole="Passenger" ToRole="Flight" />
         </EntityType>
-        <EntityType Name="Pilot">
-          <Key>
-            <PropertyRef Name="Employee_id" />
-          </Key>
+        <EntityType Name="Pilot" BaseType="DatabaseModel.Employee">
           <Property Name="License" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="License_date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Employee_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Pilot_ToEmployee" FromRole="Pilot" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Plane">
           <Key>
@@ -262,30 +250,6 @@
           <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Flights" Relationship="Self.FK_Flight_ToPlane" FromRole="Plane" ToRole="Flight" />
         </EntityType>
-        <Association Name="FK_Attendant_ToEmployee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-          <End Role="Attendant" Type="Self.Attendant" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Attendant">
-              <PropertyRef Name="Employee_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Pilot_ToEmployee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-          <End Role="Pilot" Type="Self.Pilot" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Pilot">
-              <PropertyRef Name="Employee_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Flight_ToPlane">
           <End Role="Plane" Type="Self.Plane" Multiplicity="1" />
           <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
@@ -307,20 +271,10 @@
           <End Role="Passenger" Type="Self.Passenger" Multiplicity="*" />
         </Association>
         <EntityContainer Name="AirlinesContext" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Attendants" EntityType="Self.Attendant" />
           <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="Flights" EntityType="Self.Flight" />
           <EntitySet Name="Passengers" EntityType="Self.Passenger" />
-          <EntitySet Name="Pilots" EntityType="Self.Pilot" />
           <EntitySet Name="Planes" EntityType="Self.Plane" />
-          <AssociationSet Name="FK_Attendant_ToEmployee" Association="Self.FK_Attendant_ToEmployee">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="Attendant" EntitySet="Attendants" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Pilot_ToEmployee" Association="Self.FK_Pilot_ToEmployee">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="Pilot" EntitySet="Pilots" />
-          </AssociationSet>
           <AssociationSet Name="FK_Flight_ToPlane" Association="Self.FK_Flight_ToPlane">
             <End Role="Plane" EntitySet="Planes" />
             <End Role="Flight" EntitySet="Flights" />
@@ -333,29 +287,32 @@
             <End Role="Flight" EntitySet="Flights" />
             <End Role="Passenger" EntitySet="Passengers" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="AirlinesContext">
-          <EntitySetMapping Name="Attendants">
-            <EntityTypeMapping TypeName="DatabaseModel.Attendant">
-              <MappingFragment StoreEntitySet="Attendant">
-                <ScalarProperty Name="Height" ColumnName="Height" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="Employee_id" ColumnName="Employee_id" />
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Pilot)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+              <MappingFragment StoreEntitySet="Pilot">
+                <ScalarProperty Name="License_date" ColumnName="License_date" />
+                <ScalarProperty Name="License" ColumnName="License" />
               </MappingFragment>
             </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="DatabaseModel.Employee">
+            <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Employee)">
               <MappingFragment StoreEntitySet="Employee">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
                 <ScalarProperty Name="Birth" ColumnName="Birth" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Attendant)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+              <MappingFragment StoreEntitySet="Attendant">
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -377,15 +334,6 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Pilots">
-            <EntityTypeMapping TypeName="DatabaseModel.Pilot">
-              <MappingFragment StoreEntitySet="Pilot">
-                <ScalarProperty Name="License" ColumnName="License" />
-                <ScalarProperty Name="License_date" ColumnName="License_date" />
-                <ScalarProperty Name="Employee_id" ColumnName="Employee_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -414,7 +362,7 @@
               <ScalarProperty Name="Email" ColumnName="Passenger_email" />
             </EndProperty>
           </AssociationSetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

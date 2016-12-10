@@ -30,13 +30,11 @@
         {
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.SurnameTextBox = new System.Windows.Forms.TextBox();
-            this.PersonalIdTextBox = new System.Windows.Forms.TextBox();
             this.LicenseTextBox = new System.Windows.Forms.TextBox();
             this.BirthDatePicker = new System.Windows.Forms.DateTimePicker();
             this.LicenseDatePicker = new System.Windows.Forms.DateTimePicker();
             this.NameLabel = new System.Windows.Forms.Label();
             this.SurnameLabel = new System.Windows.Forms.Label();
-            this.PersonalIdLabel = new System.Windows.Forms.Label();
             this.BirthDateLabel = new System.Windows.Forms.Label();
             this.LicenseIdLabel = new System.Windows.Forms.Label();
             this.LicenseDateLabel = new System.Windows.Forms.Label();
@@ -57,30 +55,23 @@
             this.SurnameTextBox.Size = new System.Drawing.Size(144, 20);
             this.SurnameTextBox.TabIndex = 1;
             // 
-            // PersonalIdTextBox
-            // 
-            this.PersonalIdTextBox.Location = new System.Drawing.Point(85, 64);
-            this.PersonalIdTextBox.Name = "PersonalIdTextBox";
-            this.PersonalIdTextBox.Size = new System.Drawing.Size(144, 20);
-            this.PersonalIdTextBox.TabIndex = 2;
-            // 
             // LicenseTextBox
             // 
-            this.LicenseTextBox.Location = new System.Drawing.Point(85, 116);
+            this.LicenseTextBox.Location = new System.Drawing.Point(85, 90);
             this.LicenseTextBox.Name = "LicenseTextBox";
             this.LicenseTextBox.Size = new System.Drawing.Size(144, 20);
             this.LicenseTextBox.TabIndex = 3;
             // 
             // BirthDatePicker
             // 
-            this.BirthDatePicker.Location = new System.Drawing.Point(85, 90);
+            this.BirthDatePicker.Location = new System.Drawing.Point(85, 64);
             this.BirthDatePicker.Name = "BirthDatePicker";
             this.BirthDatePicker.Size = new System.Drawing.Size(147, 20);
             this.BirthDatePicker.TabIndex = 4;
             // 
             // LicenseDatePicker
             // 
-            this.LicenseDatePicker.Location = new System.Drawing.Point(85, 142);
+            this.LicenseDatePicker.Location = new System.Drawing.Point(85, 116);
             this.LicenseDatePicker.Name = "LicenseDatePicker";
             this.LicenseDatePicker.Size = new System.Drawing.Size(147, 20);
             this.LicenseDatePicker.TabIndex = 5;
@@ -103,19 +94,10 @@
             this.SurnameLabel.TabIndex = 7;
             this.SurnameLabel.Text = "Surname";
             // 
-            // PersonalIdLabel
-            // 
-            this.PersonalIdLabel.AutoSize = true;
-            this.PersonalIdLabel.Location = new System.Drawing.Point(20, 67);
-            this.PersonalIdLabel.Name = "PersonalIdLabel";
-            this.PersonalIdLabel.Size = new System.Drawing.Size(59, 13);
-            this.PersonalIdLabel.TabIndex = 8;
-            this.PersonalIdLabel.Text = "Personal id";
-            // 
             // BirthDateLabel
             // 
             this.BirthDateLabel.AutoSize = true;
-            this.BirthDateLabel.Location = new System.Drawing.Point(27, 93);
+            this.BirthDateLabel.Location = new System.Drawing.Point(27, 67);
             this.BirthDateLabel.Name = "BirthDateLabel";
             this.BirthDateLabel.Size = new System.Drawing.Size(52, 13);
             this.BirthDateLabel.TabIndex = 9;
@@ -124,7 +106,7 @@
             // LicenseIdLabel
             // 
             this.LicenseIdLabel.AutoSize = true;
-            this.LicenseIdLabel.Location = new System.Drawing.Point(35, 119);
+            this.LicenseIdLabel.Location = new System.Drawing.Point(35, 93);
             this.LicenseIdLabel.Name = "LicenseIdLabel";
             this.LicenseIdLabel.Size = new System.Drawing.Size(44, 13);
             this.LicenseIdLabel.TabIndex = 10;
@@ -133,7 +115,7 @@
             // LicenseDateLabel
             // 
             this.LicenseDateLabel.AutoSize = true;
-            this.LicenseDateLabel.Location = new System.Drawing.Point(11, 145);
+            this.LicenseDateLabel.Location = new System.Drawing.Point(11, 119);
             this.LicenseDateLabel.Name = "LicenseDateLabel";
             this.LicenseDateLabel.Size = new System.Drawing.Size(68, 13);
             this.LicenseDateLabel.TabIndex = 11;
@@ -141,7 +123,7 @@
             // 
             // ConfirmButton
             // 
-            this.ConfirmButton.Location = new System.Drawing.Point(85, 168);
+            this.ConfirmButton.Location = new System.Drawing.Point(85, 142);
             this.ConfirmButton.Name = "ConfirmButton";
             this.ConfirmButton.Size = new System.Drawing.Size(75, 23);
             this.ConfirmButton.TabIndex = 12;
@@ -153,18 +135,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(241, 203);
+            this.ClientSize = new System.Drawing.Size(241, 174);
             this.Controls.Add(this.ConfirmButton);
             this.Controls.Add(this.LicenseDateLabel);
             this.Controls.Add(this.LicenseIdLabel);
             this.Controls.Add(this.BirthDateLabel);
-            this.Controls.Add(this.PersonalIdLabel);
             this.Controls.Add(this.SurnameLabel);
             this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.LicenseDatePicker);
             this.Controls.Add(this.BirthDatePicker);
             this.Controls.Add(this.LicenseTextBox);
-            this.Controls.Add(this.PersonalIdTextBox);
             this.Controls.Add(this.SurnameTextBox);
             this.Controls.Add(this.NameTextBox);
             this.Name = "AddPilotForm";
@@ -178,13 +158,11 @@
 
         private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.TextBox SurnameTextBox;
-        private System.Windows.Forms.TextBox PersonalIdTextBox;
         private System.Windows.Forms.TextBox LicenseTextBox;
         private System.Windows.Forms.DateTimePicker BirthDatePicker;
         private System.Windows.Forms.DateTimePicker LicenseDatePicker;
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Label SurnameLabel;
-        private System.Windows.Forms.Label PersonalIdLabel;
         private System.Windows.Forms.Label BirthDateLabel;
         private System.Windows.Forms.Label LicenseIdLabel;
         private System.Windows.Forms.Label LicenseDateLabel;

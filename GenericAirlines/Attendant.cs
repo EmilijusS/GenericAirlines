@@ -12,12 +12,9 @@ namespace GenericAirlines
     using System;
     using System.Collections.Generic;
     
-    public partial class Attendant
+    public partial class Attendant : Employee
     {
         public byte Height { get; set; }
         public string Gender { get; set; }
-        public int Employee_id { get; set; }
-    
-        public virtual Employee Employee { get; set; }
     }
 }

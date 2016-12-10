@@ -12,12 +12,9 @@ namespace GenericAirlines
     using System;
     using System.Collections.Generic;
     
-    public partial class Pilot
+    public partial class Pilot : Employee
     {
         public string License { get; set; }
         public System.DateTime License_date { get; set; }
-        public int Employee_id { get; set; }
-    
-        public virtual Employee Employee { get; set; }
     }
 }

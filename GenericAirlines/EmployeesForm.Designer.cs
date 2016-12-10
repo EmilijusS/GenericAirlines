@@ -36,21 +36,29 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.AddAttendant = new System.Windows.Forms.Button();
             this.AttendantsDataGrid = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.birthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.flightidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.licenseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.licensedateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.employeeidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.databaseDataSetWithViewsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseDataSet = new GenericAirlines.DatabaseDataSet();
+            this.pilotInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pilotInfoTableAdapter = new GenericAirlines.DatabaseDataSetTableAdapters.PilotInfoTableAdapter();
+            this.attendantInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.attendantInfoTableAdapter = new GenericAirlines.DatabaseDataSetTableAdapters.AttendantInfoTableAdapter();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.heightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.PilotsDataGrid)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AttendantsDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSetWithViewsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pilotInfoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.attendantInfoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // PilotsDataGrid
@@ -60,14 +68,12 @@
             this.PilotsDataGrid.AutoGenerateColumns = false;
             this.PilotsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PilotsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.surnameDataGridViewTextBoxColumn,
-            this.birthDataGridViewTextBoxColumn,
-            this.flightidDataGridViewTextBoxColumn,
-            this.licenseDataGridViewTextBoxColumn,
-            this.licensedateDataGridViewTextBoxColumn,
-            this.employeeidDataGridViewTextBoxColumn});
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
+            this.PilotsDataGrid.DataSource = this.pilotInfoBindingSource;
             this.PilotsDataGrid.Location = new System.Drawing.Point(8, 3);
             this.PilotsDataGrid.Name = "PilotsDataGrid";
             this.PilotsDataGrid.ReadOnly = true;
@@ -136,7 +142,13 @@
             this.AttendantsDataGrid.AllowUserToDeleteRows = false;
             this.AttendantsDataGrid.AutoGenerateColumns = false;
             this.AttendantsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AttendantsDataGrid.DataSource = this.databaseDataSetWithViewsBindingSource;
+            this.AttendantsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.heightDataGridViewTextBoxColumn,
+            this.genderDataGridViewTextBoxColumn});
+            this.AttendantsDataGrid.DataSource = this.attendantInfoBindingSource;
             this.AttendantsDataGrid.Location = new System.Drawing.Point(8, 3);
             this.AttendantsDataGrid.Name = "AttendantsDataGrid";
             this.AttendantsDataGrid.ReadOnly = true;
@@ -144,61 +156,108 @@
             this.AttendantsDataGrid.Size = new System.Drawing.Size(703, 150);
             this.AttendantsDataGrid.TabIndex = 2;
             // 
-            // idDataGridViewTextBoxColumn
+            // databaseDataSet
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.databaseDataSet.DataSetName = "DatabaseDataSet";
+            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // nameDataGridViewTextBoxColumn
+            // pilotInfoBindingSource
             // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pilotInfoBindingSource.DataMember = "PilotInfo";
+            this.pilotInfoBindingSource.DataSource = this.databaseDataSet;
             // 
-            // surnameDataGridViewTextBoxColumn
+            // pilotInfoTableAdapter
             // 
-            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "Surname";
-            this.surnameDataGridViewTextBoxColumn.HeaderText = "Surname";
-            this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
-            this.surnameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pilotInfoTableAdapter.ClearBeforeFill = true;
             // 
-            // birthDataGridViewTextBoxColumn
+            // attendantInfoBindingSource
             // 
-            this.birthDataGridViewTextBoxColumn.DataPropertyName = "Birth";
-            this.birthDataGridViewTextBoxColumn.HeaderText = "Birth";
-            this.birthDataGridViewTextBoxColumn.Name = "birthDataGridViewTextBoxColumn";
-            this.birthDataGridViewTextBoxColumn.ReadOnly = true;
+            this.attendantInfoBindingSource.DataMember = "AttendantInfo";
+            this.attendantInfoBindingSource.DataSource = this.databaseDataSet;
             // 
-            // flightidDataGridViewTextBoxColumn
+            // attendantInfoTableAdapter
             // 
-            this.flightidDataGridViewTextBoxColumn.DataPropertyName = "Flight_id";
-            this.flightidDataGridViewTextBoxColumn.HeaderText = "Flight_id";
-            this.flightidDataGridViewTextBoxColumn.Name = "flightidDataGridViewTextBoxColumn";
-            this.flightidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.attendantInfoTableAdapter.ClearBeforeFill = true;
             // 
-            // licenseDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn2
             // 
-            this.licenseDataGridViewTextBoxColumn.DataPropertyName = "License";
-            this.licenseDataGridViewTextBoxColumn.HeaderText = "License";
-            this.licenseDataGridViewTextBoxColumn.Name = "licenseDataGridViewTextBoxColumn";
-            this.licenseDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
-            // licensedateDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn3
             // 
-            this.licensedateDataGridViewTextBoxColumn.DataPropertyName = "License_date";
-            this.licensedateDataGridViewTextBoxColumn.HeaderText = "License_date";
-            this.licensedateDataGridViewTextBoxColumn.Name = "licensedateDataGridViewTextBoxColumn";
-            this.licensedateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Surname";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Surname";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
-            // employeeidDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn4
             // 
-            this.employeeidDataGridViewTextBoxColumn.DataPropertyName = "Employee_id";
-            this.employeeidDataGridViewTextBoxColumn.HeaderText = "Employee_id";
-            this.employeeidDataGridViewTextBoxColumn.Name = "employeeidDataGridViewTextBoxColumn";
-            this.employeeidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Birth";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Birth";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "License";
+            this.dataGridViewTextBoxColumn5.HeaderText = "License";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "License_date";
+            this.dataGridViewTextBoxColumn6.HeaderText = "License_date";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Surname";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Surname";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "Birth";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Birth";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // heightDataGridViewTextBoxColumn
+            // 
+            this.heightDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.heightDataGridViewTextBoxColumn.DataPropertyName = "Height";
+            this.heightDataGridViewTextBoxColumn.HeaderText = "Height";
+            this.heightDataGridViewTextBoxColumn.Name = "heightDataGridViewTextBoxColumn";
+            this.heightDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // genderDataGridViewTextBoxColumn
+            // 
+            this.genderDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.genderDataGridViewTextBoxColumn.DataPropertyName = "Gender";
+            this.genderDataGridViewTextBoxColumn.HeaderText = "Gender";
+            this.genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
+            this.genderDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // EmployeesForm
             // 
@@ -214,7 +273,9 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AttendantsDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSetWithViewsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pilotInfoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.attendantInfoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -236,6 +297,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn licenseDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn licensedateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeeidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource databaseDataSetWithViewsBindingSource;
+        private DatabaseDataSet databaseDataSet;
+        private System.Windows.Forms.BindingSource pilotInfoBindingSource;
+        private DatabaseDataSetTableAdapters.PilotInfoTableAdapter pilotInfoTableAdapter;
+        private System.Windows.Forms.BindingSource attendantInfoBindingSource;
+        private DatabaseDataSetTableAdapters.AttendantInfoTableAdapter attendantInfoTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn heightDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn;
     }
 }
