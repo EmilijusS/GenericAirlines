@@ -30,24 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.PilotsDataGrid = new System.Windows.Forms.DataGridView();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.AddPilot = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.AddAttendant = new System.Windows.Forms.Button();
-            this.AttendantsDataGrid = new System.Windows.Forms.DataGridView();
-            this.databaseDataSet = new GenericAirlines.DatabaseDataSet();
-            this.pilotInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pilotInfoTableAdapter = new GenericAirlines.DatabaseDataSetTableAdapters.PilotInfoTableAdapter();
-            this.attendantInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.attendantInfoTableAdapter = new GenericAirlines.DatabaseDataSetTableAdapters.AttendantInfoTableAdapter();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.heightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EditAttendantColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.DeleteAttendantColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,13 +37,31 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.pilotInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseDataSet = new GenericAirlines.DatabaseDataSet();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.AddPilot = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.AddAttendant = new System.Windows.Forms.Button();
+            this.AttendantsDataGrid = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.heightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditAttendantColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.DeleteAttendantColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.attendantInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pilotInfoTableAdapter = new GenericAirlines.DatabaseDataSetTableAdapters.PilotInfoTableAdapter();
+            this.attendantInfoTableAdapter = new GenericAirlines.DatabaseDataSetTableAdapters.AttendantInfoTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.PilotsDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pilotInfoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AttendantsDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pilotInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.attendantInfoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,6 +90,77 @@
             this.PilotsDataGrid.Size = new System.Drawing.Size(891, 167);
             this.PilotsDataGrid.TabIndex = 0;
             this.PilotsDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PilotsDataGrid_CellContentClick);
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Surname";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Surname";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Birth";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Birth";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "License";
+            this.dataGridViewTextBoxColumn5.HeaderText = "License";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "License_date";
+            this.dataGridViewTextBoxColumn6.HeaderText = "License_date";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // Edit
+            // 
+            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Edit.FillWeight = 70F;
+            this.Edit.HeaderText = "Edit";
+            this.Edit.Name = "Edit";
+            this.Edit.ReadOnly = true;
+            this.Edit.Text = "Edit";
+            this.Edit.UseColumnTextForButtonValue = true;
+            // 
+            // Delete
+            // 
+            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Delete.FillWeight = 70F;
+            this.Delete.HeaderText = "Delete";
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Text = "Delete";
+            this.Delete.UseColumnTextForButtonValue = true;
+            // 
+            // pilotInfoBindingSource
+            // 
+            this.pilotInfoBindingSource.DataMember = "PilotInfo";
+            this.pilotInfoBindingSource.DataSource = this.databaseDataSet;
+            this.pilotInfoBindingSource.CurrentChanged += new System.EventHandler(this.pilotInfoBindingSource_CurrentChanged);
+            // 
+            // databaseDataSet
+            // 
+            this.databaseDataSet.DataSetName = "DatabaseDataSet";
+            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tabControl1
             // 
@@ -175,29 +246,6 @@
             this.AttendantsDataGrid.TabIndex = 2;
             this.AttendantsDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AttendantsDataGrid_CellContentClick);
             // 
-            // databaseDataSet
-            // 
-            this.databaseDataSet.DataSetName = "DatabaseDataSet";
-            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // pilotInfoBindingSource
-            // 
-            this.pilotInfoBindingSource.DataMember = "PilotInfo";
-            this.pilotInfoBindingSource.DataSource = this.databaseDataSet;
-            // 
-            // pilotInfoTableAdapter
-            // 
-            this.pilotInfoTableAdapter.ClearBeforeFill = true;
-            // 
-            // attendantInfoBindingSource
-            // 
-            this.attendantInfoBindingSource.DataMember = "AttendantInfo";
-            this.attendantInfoBindingSource.DataSource = this.databaseDataSet;
-            // 
-            // attendantInfoTableAdapter
-            // 
-            this.attendantInfoTableAdapter.ClearBeforeFill = true;
-            // 
             // dataGridViewTextBoxColumn9
             // 
             this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -258,65 +306,18 @@
             this.DeleteAttendantColumn.Text = "Delete";
             this.DeleteAttendantColumn.UseColumnTextForButtonValue = true;
             // 
-            // dataGridViewTextBoxColumn2
+            // attendantInfoBindingSource
             // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Name";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.attendantInfoBindingSource.DataMember = "AttendantInfo";
+            this.attendantInfoBindingSource.DataSource = this.databaseDataSet;
             // 
-            // dataGridViewTextBoxColumn3
+            // pilotInfoTableAdapter
             // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Surname";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Surname";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.pilotInfoTableAdapter.ClearBeforeFill = true;
             // 
-            // dataGridViewTextBoxColumn4
+            // attendantInfoTableAdapter
             // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Birth";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Birth";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "License";
-            this.dataGridViewTextBoxColumn5.HeaderText = "License";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "License_date";
-            this.dataGridViewTextBoxColumn6.HeaderText = "License_date";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // Edit
-            // 
-            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Edit.FillWeight = 70F;
-            this.Edit.HeaderText = "Edit";
-            this.Edit.Name = "Edit";
-            this.Edit.ReadOnly = true;
-            this.Edit.Text = "Edit";
-            this.Edit.UseColumnTextForButtonValue = true;
-            // 
-            // Delete
-            // 
-            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Delete.FillWeight = 70F;
-            this.Delete.HeaderText = "Delete";
-            this.Delete.Name = "Delete";
-            this.Delete.ReadOnly = true;
-            this.Delete.Text = "Delete";
-            this.Delete.UseColumnTextForButtonValue = true;
+            this.attendantInfoTableAdapter.ClearBeforeFill = true;
             // 
             // EmployeesForm
             // 
@@ -328,12 +329,12 @@
             this.Text = "EmployeesForm";
             this.Load += new System.EventHandler(this.EmployeesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PilotsDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pilotInfoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AttendantsDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pilotInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.attendantInfoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -361,13 +362,6 @@
         private DatabaseDataSetTableAdapters.PilotInfoTableAdapter pilotInfoTableAdapter;
         private System.Windows.Forms.BindingSource attendantInfoBindingSource;
         private DatabaseDataSetTableAdapters.AttendantInfoTableAdapter attendantInfoTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewButtonColumn Edit;
-        private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
@@ -375,5 +369,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn EditAttendantColumn;
         private System.Windows.Forms.DataGridViewButtonColumn DeleteAttendantColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewButtonColumn Edit;
+        private System.Windows.Forms.DataGridViewButtonColumn Delete;
     }
 }

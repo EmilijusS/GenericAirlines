@@ -1,3 +1,9 @@
-﻿Auto generated ID's
-Validation
-Everything else
+﻿AddFlightForm (select date, route (SelectRouteForm, AddRouteForm), ability to repeat this flight every day/week for up to 6 months)
+SelectPlaneForm
+SelectPilotsForm
+SelectAttendantsForm
+ViewPassengersForm
+
+PassengerForm(view tickets, buy tickets by route and date)
+RegisterForm
+LoginForm

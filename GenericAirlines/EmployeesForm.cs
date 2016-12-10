@@ -127,5 +127,10 @@ namespace GenericAirlines
             editAttendantForm.FormClosed += (a, b) => EmployeesForm_Load(a, b);
             editAttendantForm.Show();
         }
+
+        private void pilotInfoBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

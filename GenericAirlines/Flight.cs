@@ -22,8 +22,8 @@ namespace GenericAirlines
         }
     
         public int Id { get; set; }
-        public System.DateTime Departure { get; set; }
-        public System.DateTime Arrival { get; set; }
+        public System.DateTimeOffset Departure { get; set; }
+        public System.DateTimeOffset Arrival { get; set; }
         public string Origin { get; set; }
         public string Destination { get; set; }
         public string Plane_id { get; set; }

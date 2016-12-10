@@ -120,6 +120,12 @@
     <Compile Include="Flight.cs">
       <DependentUpon>AirlinesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="FlightForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FlightForm.Designer.cs">
+      <DependentUpon>FlightForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Passenger.cs">
       <DependentUpon>AirlinesModel.tt</DependentUpon>
     </Compile>
@@ -160,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeesForm.resx">
       <DependentUpon>EmployeesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FlightForm.resx">
+      <DependentUpon>FlightForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlaneCrewForm.resx">
       <DependentUpon>PlaneCrewForm.cs</DependentUpon>

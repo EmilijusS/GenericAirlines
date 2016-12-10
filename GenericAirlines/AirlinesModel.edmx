@@ -35,8 +35,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Departure" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="Arrival" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Departure" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="Arrival" Type="datetimeoffset" Precision="7" Nullable="false" />
           <Property Name="Origin" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="Destination" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="Plane_id" Type="nvarchar" MaxLength="10" Nullable="false" />
@@ -218,8 +218,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Departure" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="Arrival" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Departure" Type="DateTimeOffset" Nullable="false" />
+          <Property Name="Arrival" Type="DateTimeOffset" Nullable="false" />
           <Property Name="Origin" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Destination" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Plane_id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
