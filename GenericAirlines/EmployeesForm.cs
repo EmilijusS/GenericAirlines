@@ -12,6 +12,11 @@ namespace GenericAirlines
 {
     public partial class EmployeesForm : Form
     {
+        private readonly int PilotEditColumnIndex = 5;
+        private readonly int PilotDeleteColumnIndex = 6;
+        private readonly int AttendantEditColumnIndex = 5;
+        private readonly int AttendantDeleteColumnIndex = 6;
+
         public EmployeesForm()
         {
             InitializeComponent();
@@ -20,7 +25,7 @@ namespace GenericAirlines
 
         private void AddPilot_Click(object sender, EventArgs e)
         {
-            var addPilotForm = new AddPilotForm();
+            var addPilotForm = new AddEditPilotForm();
             addPilotForm.FormClosed += (a, b) => EmployeesForm_Load(a, b);
             addPilotForm.Show();
         }
@@ -32,6 +37,47 @@ namespace GenericAirlines
             // TODO: This line of code loads data into the 'databaseDataSet.PilotInfo' table. You can move, or remove it, as needed.
             this.pilotInfoTableAdapter.Fill(this.databaseDataSet.PilotInfo);
 
+        }
+
+        private void PilotsDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (e.ColumnIndex == PilotEditColumnIndex)
+                    EditPilot(e.RowIndex);
+
+                if (e.ColumnIndex == PilotDeleteColumnIndex)
+                    DeletePilot(e.RowIndex);
+            }
+        }
+
+        private void DeletePilot(int rowIndex)
+        {
+            var d = (DataRowView)PilotsDataGrid.Rows[rowIndex].DataBoundItem;
+
+            using (var db = new AirlinesContext())
+            {
+                db.Employees.Remove(db.Employees.Find(d.Row[0]));
+                db.SaveChanges();
+            }
+
+            EmployeesForm_Load(this, new EventArgs());
+        }
+
+        private void EditPilot(int rowIndex)
+        {
+            Pilot pilot;
+            var d = (DataRowView)PilotsDataGrid.Rows[rowIndex].DataBoundItem;
+
+            using (var db = new AirlinesContext())
+            {
+                pilot = (Pilot)db.Employees.Find(d.Row[0]);
+            }
+
+            var editPlaneForm = new AddEditPilotForm(pilot);
+
+            editPlaneForm.FormClosed += (a, b) => EmployeesForm_Load(a, b);
+            editPlaneForm.Show();
         }
     }
 }

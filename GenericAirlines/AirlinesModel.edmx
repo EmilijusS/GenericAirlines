@@ -297,6 +297,7 @@
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Pilot)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
               <MappingFragment StoreEntitySet="Pilot">
+                <ScalarProperty Name="Id" ColumnName="Employee_id" />
                 <ScalarProperty Name="License_date" ColumnName="License_date" />
                 <ScalarProperty Name="License" ColumnName="License" />
               </MappingFragment>
@@ -311,6 +312,7 @@
             </EntityTypeMapping>
             <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Attendant)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
               <MappingFragment StoreEntitySet="Attendant">
+                <ScalarProperty Name="Id" ColumnName="Employee_id" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="Height" ColumnName="Height" />
               </MappingFragment>

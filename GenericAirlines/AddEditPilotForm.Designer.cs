@@ -1,6 +1,6 @@
 ﻿namespace GenericAirlines
 {
-    partial class AddPilotForm
+    partial class AddEditPilotForm
     {
         /// <summary>
         /// Required designer variable.
@@ -131,7 +131,7 @@
             this.ConfirmButton.UseVisualStyleBackColor = true;
             this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
             // 
-            // AddPilotForm
+            // AddEditPilotForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -147,8 +147,9 @@
             this.Controls.Add(this.LicenseTextBox);
             this.Controls.Add(this.SurnameTextBox);
             this.Controls.Add(this.NameTextBox);
-            this.Name = "AddPilotForm";
+            this.Name = "AddEditPilotForm";
             this.Text = "AddPilotForm";
+            this.Shown += new System.EventHandler(this.AddEditPilotForm_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
