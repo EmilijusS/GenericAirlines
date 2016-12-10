@@ -799,7 +799,7 @@ namespace GenericAirlines {
                                 this.columnEmployee_id}, true));
                 this.columnHeight.AllowDBNull = false;
                 this.columnGender.AllowDBNull = false;
-                this.columnGender.MaxLength = 6;
+                this.columnGender.MaxLength = 50;
                 this.columnEmployee_id.AllowDBNull = false;
                 this.columnEmployee_id.Unique = true;
             }
@@ -2313,7 +2313,7 @@ namespace GenericAirlines {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnEmployee_id}, true));
                 this.columnLicense.AllowDBNull = false;
-                this.columnLicense.MaxLength = 10;
+                this.columnLicense.MaxLength = 20;
                 this.columnLicense_date.AllowDBNull = false;
                 this.columnEmployee_id.AllowDBNull = false;
                 this.columnEmployee_id.Unique = true;
@@ -3238,7 +3238,7 @@ namespace GenericAirlines {
                 this.columnBirth.AllowDBNull = false;
                 this.columnHeight.AllowDBNull = false;
                 this.columnGender.AllowDBNull = false;
-                this.columnGender.MaxLength = 6;
+                this.columnGender.MaxLength = 50;
                 this.columnEmployee_id.AllowDBNull = false;
             }
             
@@ -3589,7 +3589,7 @@ namespace GenericAirlines {
                 this.columnSurname.MaxLength = 50;
                 this.columnBirth.AllowDBNull = false;
                 this.columnLicense.AllowDBNull = false;
-                this.columnLicense.MaxLength = 10;
+                this.columnLicense.MaxLength = 20;
                 this.columnLicense_date.AllowDBNull = false;
                 this.columnEmployee_id.AllowDBNull = false;
             }
@@ -6686,7 +6686,7 @@ SELECT Id, Departure, Arrival, Origin, Destination, Plane_id FROM Flight WHERE (
             this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Pilot] WHERE (([License] = @Original_License) AND ([License_da" +
                 "te] = @Original_License_date) AND ([Employee_id] = @Original_Employee_id))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_License", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "License", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_License", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "License", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_License_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "License_date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Employee_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Employee_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
@@ -6695,7 +6695,7 @@ SELECT Id, Departure, Arrival, Origin, Destination, Plane_id FROM Flight WHERE (
                 "ense, @License_date, @Employee_id);\r\nSELECT License, License_date, Employee_id F" +
                 "ROM Pilot WHERE (Employee_id = @Employee_id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@License", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "License", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@License", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "License", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@License_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "License_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Employee_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Employee_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
@@ -6703,10 +6703,10 @@ SELECT Id, Departure, Arrival, Origin, Destination, Plane_id FROM Flight WHERE (
             this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Pilot] SET [License] = @License, [License_date] = @License_date, [Employee_id] = @Employee_id WHERE (([License] = @Original_License) AND ([License_date] = @Original_License_date) AND ([Employee_id] = @Original_Employee_id));
 SELECT License, License_date, Employee_id FROM Pilot WHERE (Employee_id = @Employee_id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@License", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "License", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@License", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "License", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@License_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "License_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Employee_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Employee_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_License", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "License", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_License", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "License", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_License_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "License_date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Employee_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Employee_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }

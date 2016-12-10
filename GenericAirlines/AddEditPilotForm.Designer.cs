@@ -68,6 +68,7 @@
             this.BirthDatePicker.Name = "BirthDatePicker";
             this.BirthDatePicker.Size = new System.Drawing.Size(147, 20);
             this.BirthDatePicker.TabIndex = 4;
+            this.BirthDatePicker.Value = new System.DateTime(1990, 1, 1, 0, 0, 0, 0);
             // 
             // LicenseDatePicker
             // 
@@ -75,6 +76,7 @@
             this.LicenseDatePicker.Name = "LicenseDatePicker";
             this.LicenseDatePicker.Size = new System.Drawing.Size(147, 20);
             this.LicenseDatePicker.TabIndex = 5;
+            this.LicenseDatePicker.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             // 
             // NameLabel
             // 

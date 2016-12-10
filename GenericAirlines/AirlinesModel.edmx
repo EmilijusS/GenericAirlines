@@ -4,13 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Attendant">
           <Key>
             <PropertyRef Name="Employee_id" />
           </Key>
           <Property Name="Height" Type="tinyint" Nullable="false" />
-          <Property Name="Gender" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Employee_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee">
@@ -53,7 +53,7 @@
           <Key>
             <PropertyRef Name="Employee_id" />
           </Key>
-          <Property Name="License" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="License" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="License_date" Type="date" Nullable="false" />
           <Property Name="Employee_id" Type="int" Nullable="false" />
         </EntityType>
@@ -195,14 +195,13 @@
             <End Role="Ticket" EntitySet="Ticket" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Attendant" BaseType="DatabaseModel.Employee">
           <Property Name="Height" Type="Byte" Nullable="false" />
-          <Property Name="Gender" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -238,7 +237,7 @@
           <NavigationProperty Name="Flights" Relationship="Self.Ticket" FromRole="Passenger" ToRole="Flight" />
         </EntityType>
         <EntityType Name="Pilot" BaseType="DatabaseModel.Employee">
-          <Property Name="License" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="License" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="License_date" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="Plane">

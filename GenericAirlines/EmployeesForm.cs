@@ -30,6 +30,13 @@ namespace GenericAirlines
             addPilotForm.Show();
         }
 
+        private void AddAttendant_Click(object sender, EventArgs e)
+        {
+            var addAttendantForm = new AddEditAttendantForm();
+            addAttendantForm.FormClosed += (a, b) => EmployeesForm_Load(a, b);
+            addAttendantForm.Show();
+        }
+
         private void EmployeesForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'databaseDataSet.AttendantInfo' table. You can move, or remove it, as needed.
@@ -51,9 +58,34 @@ namespace GenericAirlines
             }
         }
 
+        private void AttendantsDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (e.ColumnIndex == AttendantEditColumnIndex)
+                    EditAttendant(e.RowIndex);
+
+                if (e.ColumnIndex == AttendantDeleteColumnIndex)
+                    DeleteAttendant(e.RowIndex);
+            }
+        }
+
         private void DeletePilot(int rowIndex)
         {
             var d = (DataRowView)PilotsDataGrid.Rows[rowIndex].DataBoundItem;
+
+            using (var db = new AirlinesContext())
+            {
+                db.Employees.Remove(db.Employees.Find(d.Row[0]));
+                db.SaveChanges();
+            }
+
+            EmployeesForm_Load(this, new EventArgs());
+        }
+
+        private void DeleteAttendant(int rowIndex)
+        {
+            var d = (DataRowView)AttendantsDataGrid.Rows[rowIndex].DataBoundItem;
 
             using (var db = new AirlinesContext())
             {
@@ -78,6 +110,22 @@ namespace GenericAirlines
 
             editPlaneForm.FormClosed += (a, b) => EmployeesForm_Load(a, b);
             editPlaneForm.Show();
+        }
+
+        private void EditAttendant(int rowIndex)
+        {
+            Attendant attendant;
+            var d = (DataRowView)AttendantsDataGrid.Rows[rowIndex].DataBoundItem;
+
+            using (var db = new AirlinesContext())
+            {
+                attendant = (Attendant)db.Employees.Find(d.Row[0]);
+            }
+
+            var editAttendantForm = new AddEditAttendantForm(attendant);
+
+            editAttendantForm.FormClosed += (a, b) => EmployeesForm_Load(a, b);
+            editAttendantForm.Show();
         }
     }
 }
