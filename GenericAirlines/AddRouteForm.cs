@@ -14,7 +14,7 @@ namespace GenericAirlines
     public partial class AddRouteForm : Form
     {
 
-        public AddRouteForm(Route route)
+        public AddRouteForm()
         {
             InitializeComponent();
         }

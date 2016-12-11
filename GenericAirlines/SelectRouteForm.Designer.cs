@@ -33,13 +33,13 @@
             this.routeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.routeTableAdapter = new GenericAirlines.DatabaseDataSetTableAdapters.RouteTableAdapter();
             this.PlaneDataGrid = new System.Windows.Forms.DataGridView();
-            this.AddRouteButton = new System.Windows.Forms.Button();
             this.originDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.destinationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.departureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.arrivalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Select = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.AddRouteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.routeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlaneDataGrid)).BeginInit();
@@ -82,16 +82,7 @@
             this.PlaneDataGrid.RowHeadersVisible = false;
             this.PlaneDataGrid.Size = new System.Drawing.Size(596, 199);
             this.PlaneDataGrid.TabIndex = 4;
-            // 
-            // AddRouteButton
-            // 
-            this.AddRouteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddRouteButton.Location = new System.Drawing.Point(12, 205);
-            this.AddRouteButton.Name = "AddRouteButton";
-            this.AddRouteButton.Size = new System.Drawing.Size(75, 23);
-            this.AddRouteButton.TabIndex = 5;
-            this.AddRouteButton.Text = "Add route";
-            this.AddRouteButton.UseVisualStyleBackColor = true;
+            this.PlaneDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PlaneDataGrid_CellContentClick);
             // 
             // originDataGridViewTextBoxColumn
             // 
@@ -138,6 +129,17 @@
             this.Delete.ReadOnly = true;
             this.Delete.Text = "Delete";
             this.Delete.UseColumnTextForButtonValue = true;
+            // 
+            // AddRouteButton
+            // 
+            this.AddRouteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddRouteButton.Location = new System.Drawing.Point(12, 205);
+            this.AddRouteButton.Name = "AddRouteButton";
+            this.AddRouteButton.Size = new System.Drawing.Size(75, 23);
+            this.AddRouteButton.TabIndex = 5;
+            this.AddRouteButton.Text = "Add route";
+            this.AddRouteButton.UseVisualStyleBackColor = true;
+            this.AddRouteButton.Click += new System.EventHandler(this.AddRouteButton_Click);
             // 
             // SelectRouteForm
             // 

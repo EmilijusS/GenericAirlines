@@ -1,4 +1,4 @@
-﻿AddFlightForm (select date, route (SelectRouteForm, AddRouteForm), ability to repeat this flight every day/week for up to 6 months)
+﻿AddFlightForm (select date, route (SelectRouteForm), ability to repeat this flight every day/week for up to 6 months)
 SelectPlaneForm
 SelectPilotsForm
 SelectAttendantsForm
@@ -7,3 +7,7 @@ ViewPassengersForm
 PassengerForm(view tickets, buy tickets by route and date)
 RegisterForm
 LoginForm
+
+DON'T FORGET:
+confirmation after delete
+can't delete route if there are flights using it
