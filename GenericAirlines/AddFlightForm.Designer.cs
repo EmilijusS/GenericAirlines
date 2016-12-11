@@ -38,19 +38,21 @@
             this.label4 = new System.Windows.Forms.Label();
             this.SelectRouteButton = new System.Windows.Forms.Button();
             this.ConfirmButton = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.DatePicker = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CheckBox = new System.Windows.Forms.CheckBox();
+            this.RepeatBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.MonthBox = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.MonthBox)).BeginInit();
             this.SuspendLayout();
             // 
             // OriginTextBox
             // 
+            this.OriginTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.OriginTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.OriginTextBox.Enabled = false;
             this.OriginTextBox.Location = new System.Drawing.Point(46, 25);
             this.OriginTextBox.Name = "OriginTextBox";
             this.OriginTextBox.ReadOnly = true;
@@ -59,7 +61,9 @@
             // 
             // DestinationTextBox
             // 
+            this.DestinationTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.DestinationTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.DestinationTextBox.Enabled = false;
             this.DestinationTextBox.Location = new System.Drawing.Point(185, 25);
             this.DestinationTextBox.Name = "DestinationTextBox";
             this.DestinationTextBox.ReadOnly = true;
@@ -68,6 +72,8 @@
             // 
             // DepartureTextBox
             // 
+            this.DepartureTextBox.BackColor = System.Drawing.SystemColors.Window;
+            this.DepartureTextBox.Enabled = false;
             this.DepartureTextBox.Location = new System.Drawing.Point(23, 76);
             this.DepartureTextBox.Name = "DepartureTextBox";
             this.DepartureTextBox.ReadOnly = true;
@@ -76,6 +82,8 @@
             // 
             // ArrivalTextBox
             // 
+            this.ArrivalTextBox.BackColor = System.Drawing.SystemColors.Window;
+            this.ArrivalTextBox.Enabled = false;
             this.ArrivalTextBox.Location = new System.Drawing.Point(159, 76);
             this.ArrivalTextBox.Name = "ArrivalTextBox";
             this.ArrivalTextBox.ReadOnly = true;
@@ -126,6 +134,7 @@
             this.SelectRouteButton.TabIndex = 8;
             this.SelectRouteButton.Text = "Select route";
             this.SelectRouteButton.UseVisualStyleBackColor = true;
+            this.SelectRouteButton.Click += new System.EventHandler(this.SelectRouteButton_Click);
             // 
             // ConfirmButton
             // 
@@ -135,14 +144,15 @@
             this.ConfirmButton.TabIndex = 9;
             this.ConfirmButton.Text = "Confirm";
             this.ConfirmButton.UseVisualStyleBackColor = true;
+            this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
             // 
-            // dateTimePicker1
+            // DatePicker
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(57, 157);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(75, 20);
-            this.dateTimePicker1.TabIndex = 10;
+            this.DatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DatePicker.Location = new System.Drawing.Point(57, 157);
+            this.DatePicker.Name = "DatePicker";
+            this.DatePicker.Size = new System.Drawing.Size(75, 20);
+            this.DatePicker.TabIndex = 10;
             // 
             // label5
             // 
@@ -153,27 +163,29 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Date";
             // 
-            // checkBox1
+            // CheckBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(23, 199);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(90, 17);
-            this.checkBox1.TabIndex = 12;
-            this.checkBox1.Text = "Repeat every";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.CheckBox.AutoSize = true;
+            this.CheckBox.Location = new System.Drawing.Point(23, 199);
+            this.CheckBox.Name = "CheckBox";
+            this.CheckBox.Size = new System.Drawing.Size(90, 17);
+            this.CheckBox.TabIndex = 12;
+            this.CheckBox.Text = "Repeat every";
+            this.CheckBox.UseVisualStyleBackColor = true;
+            this.CheckBox.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
             // 
-            // comboBox1
+            // RepeatBox
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.RepeatBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.RepeatBox.Enabled = false;
+            this.RepeatBox.FormattingEnabled = true;
+            this.RepeatBox.Items.AddRange(new object[] {
             "Day",
             "Week"});
-            this.comboBox1.Location = new System.Drawing.Point(119, 197);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 13;
+            this.RepeatBox.Location = new System.Drawing.Point(119, 197);
+            this.RepeatBox.Name = "RepeatBox";
+            this.RepeatBox.Size = new System.Drawing.Size(121, 21);
+            this.RepeatBox.TabIndex = 13;
             // 
             // label6
             // 
@@ -187,29 +199,30 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(129, 233);
+            this.label7.Location = new System.Drawing.Point(118, 233);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 13);
             this.label7.TabIndex = 15;
             this.label7.Text = "months";
             // 
-            // numericUpDown1
+            // MonthBox
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(71, 231);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.MonthBox.Enabled = false;
+            this.MonthBox.Location = new System.Drawing.Point(71, 231);
+            this.MonthBox.Maximum = new decimal(new int[] {
             6,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.MonthBox.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(41, 20);
-            this.numericUpDown1.TabIndex = 16;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.MonthBox.Name = "MonthBox";
+            this.MonthBox.Size = new System.Drawing.Size(41, 20);
+            this.MonthBox.TabIndex = 16;
+            this.MonthBox.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -220,13 +233,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(273, 321);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.MonthBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.RepeatBox);
+            this.Controls.Add(this.CheckBox);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.DatePicker);
             this.Controls.Add(this.ConfirmButton);
             this.Controls.Add(this.SelectRouteButton);
             this.Controls.Add(this.label4);
@@ -239,7 +252,7 @@
             this.Controls.Add(this.OriginTextBox);
             this.Name = "AddFlightForm";
             this.Text = "AddFlightForm";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MonthBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,12 +270,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button SelectRouteButton;
         private System.Windows.Forms.Button ConfirmButton;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker DatePicker;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.CheckBox CheckBox;
+        private System.Windows.Forms.ComboBox RepeatBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown MonthBox;
     }
 }

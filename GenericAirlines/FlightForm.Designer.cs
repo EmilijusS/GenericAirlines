@@ -157,6 +157,7 @@
             // databaseDataSet
             // 
             this.databaseDataSet.DataSetName = "DatabaseDataSet";
+            this.databaseDataSet.EnforceConstraints = false;
             this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // AddFlightButton
@@ -167,6 +168,7 @@
             this.AddFlightButton.TabIndex = 4;
             this.AddFlightButton.Text = "Add flight";
             this.AddFlightButton.UseVisualStyleBackColor = true;
+            this.AddFlightButton.Click += new System.EventHandler(this.AddFlightButton_Click);
             // 
             // flightInfoTableAdapter
             // 

@@ -1779,7 +1779,6 @@ namespace GenericAirlines {
                 this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
                 this.columnDate.AllowDBNull = false;
-                this.columnPlane_id.AllowDBNull = false;
                 this.columnPlane_id.MaxLength = 10;
                 this.columnRoute_id.AllowDBNull = false;
             }
@@ -4691,7 +4690,12 @@ namespace GenericAirlines {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Plane_id {
                 get {
-                    return ((string)(this[this.tableFlight.Plane_idColumn]));
+                    if (this.IsPlane_idNull()) {
+                        return null;
+                    }
+                    else {
+                        return ((string)(this[this.tableFlight.Plane_idColumn]));
+                    }
                 }
                 set {
                     this[this.tableFlight.Plane_idColumn] = value;
@@ -4729,6 +4733,18 @@ namespace GenericAirlines {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Flight_ToRoute"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPlane_idNull() {
+                return this.IsNull(this.tableFlight.Plane_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPlane_idNull() {
+                this[this.tableFlight.Plane_idColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6982,7 +6998,7 @@ SELECT Id, Date, Plane_id, Route_id FROM Flight WHERE (Id = @Id)";
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_Date));
             if ((Original_Plane_id == null)) {
-                throw new global::System.ArgumentNullException("Original_Plane_id");
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Plane_id));
@@ -7011,7 +7027,7 @@ SELECT Id, Date, Plane_id, Route_id FROM Flight WHERE (Id = @Id)";
         public virtual int Insert(System.DateTime Date, string Plane_id, int Route_id) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(Date));
             if ((Plane_id == null)) {
-                throw new global::System.ArgumentNullException("Plane_id");
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Plane_id));
@@ -7040,7 +7056,7 @@ SELECT Id, Date, Plane_id, Route_id FROM Flight WHERE (Id = @Id)";
         public virtual int Update(System.DateTime Date, string Plane_id, int Route_id, int Original_Id, System.DateTime Original_Date, string Original_Plane_id, int Original_Route_id, int Id) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(Date));
             if ((Plane_id == null)) {
-                throw new global::System.ArgumentNullException("Plane_id");
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Plane_id));
@@ -7049,7 +7065,7 @@ SELECT Id, Date, Plane_id, Route_id FROM Flight WHERE (Id = @Id)";
             this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Id));
             this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(Original_Date));
             if ((Original_Plane_id == null)) {
-                throw new global::System.ArgumentNullException("Original_Plane_id");
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_Plane_id));
