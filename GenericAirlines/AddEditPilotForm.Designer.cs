@@ -64,6 +64,7 @@
             // 
             // BirthDatePicker
             // 
+            this.BirthDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.BirthDatePicker.Location = new System.Drawing.Point(85, 64);
             this.BirthDatePicker.Name = "BirthDatePicker";
             this.BirthDatePicker.Size = new System.Drawing.Size(147, 20);
@@ -72,6 +73,7 @@
             // 
             // LicenseDatePicker
             // 
+            this.LicenseDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.LicenseDatePicker.Location = new System.Drawing.Point(85, 116);
             this.LicenseDatePicker.Name = "LicenseDatePicker";
             this.LicenseDatePicker.Size = new System.Drawing.Size(147, 20);

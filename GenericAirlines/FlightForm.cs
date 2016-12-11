@@ -21,11 +21,6 @@ namespace GenericAirlines
         {
             // TODO: This line of code loads data into the 'databaseDataSet.FlightInfo' table. You can move, or remove it, as needed.
             this.flightInfoTableAdapter.Fill(this.databaseDataSet.FlightInfo);
-            // TODO: This line of code loads data into the 'databaseDataSet1.FlightInfo' table. You can move, or remove it, as needed.
-            this.flightInfoTableAdapter.Fill(this.databaseDataSet1.FlightInfo);
-            // TODO: This line of code loads data into the 'databaseDataSet.Flight' table. You can move, or remove it, as needed.
-            this.flightTableAdapter.Fill(this.databaseDataSet.Flight);
-
         }
     }
 }

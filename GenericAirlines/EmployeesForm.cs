@@ -25,15 +25,21 @@ namespace GenericAirlines
 
         private void AddPilot_Click(object sender, EventArgs e)
         {
+            this.Enabled = false;
             var addPilotForm = new AddEditPilotForm();
-            addPilotForm.FormClosed += (a, b) => EmployeesForm_Load(a, b);
+            addPilotForm.FormClosed += (a, b) => { EmployeesForm_Load(a, b);
+                this.Enabled = true;
+            };
             addPilotForm.Show();
         }
 
         private void AddAttendant_Click(object sender, EventArgs e)
         {
+            this.Enabled = false;
             var addAttendantForm = new AddEditAttendantForm();
-            addAttendantForm.FormClosed += (a, b) => EmployeesForm_Load(a, b);
+            addAttendantForm.FormClosed += (a, b) => { EmployeesForm_Load(a, b);
+                this.Enabled = true;
+            };
             addAttendantForm.Show();
         }
 
@@ -126,11 +132,6 @@ namespace GenericAirlines
 
             editAttendantForm.FormClosed += (a, b) => EmployeesForm_Load(a, b);
             editAttendantForm.Show();
-        }
-
-        private void pilotInfoBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

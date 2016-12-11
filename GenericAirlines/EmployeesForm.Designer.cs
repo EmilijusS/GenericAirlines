@@ -155,7 +155,6 @@
             // 
             this.pilotInfoBindingSource.DataMember = "PilotInfo";
             this.pilotInfoBindingSource.DataSource = this.databaseDataSet;
-            this.pilotInfoBindingSource.CurrentChanged += new System.EventHandler(this.pilotInfoBindingSource_CurrentChanged);
             // 
             // databaseDataSet
             // 

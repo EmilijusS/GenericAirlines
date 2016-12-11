@@ -24,8 +24,11 @@ namespace GenericAirlines
 
         private void AddPlane_Click(object sender, EventArgs e)
         {
+            this.Enabled = false;
             var addPlaneForm = new AddEditPlaneForm();
-            addPlaneForm.FormClosed += (a, b) => PlaneForm_Load(a, b);
+            addPlaneForm.FormClosed += (a, b) => { PlaneForm_Load(a, b);
+                this.Enabled = true;
+            };
             addPlaneForm.Show();
         }
 

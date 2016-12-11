@@ -85,6 +85,12 @@
     <Compile Include="AddEditPilotForm.Designer.cs">
       <DependentUpon>AddEditPilotForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddFlightForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddFlightForm.Designer.cs">
+      <DependentUpon>AddFlightForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AirlinesModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -163,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddEditPilotForm.resx">
       <DependentUpon>AddEditPilotForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddFlightForm.resx">
+      <DependentUpon>AddFlightForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeesForm.resx">
       <DependentUpon>EmployeesForm.cs</DependentUpon>

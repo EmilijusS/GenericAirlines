@@ -30,10 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.PlaneDataGrid = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.databaseDataSet = new GenericAirlines.DatabaseDataSet();
-            this.flightInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.flightInfoTableAdapter = new GenericAirlines.DatabaseDataSetTableAdapters.FlightInfoTableAdapter();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.departureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.arrivalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,9 +40,13 @@
             this.Attendants = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Passengers = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.flightInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseDataSet = new GenericAirlines.DatabaseDataSet();
+            this.AddFlightButton = new System.Windows.Forms.Button();
+            this.flightInfoTableAdapter = new GenericAirlines.DatabaseDataSetTableAdapters.FlightInfoTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.PlaneDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.flightInfoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // PlaneDataGrid
@@ -76,29 +76,6 @@
             this.PlaneDataGrid.RowHeadersVisible = false;
             this.PlaneDataGrid.Size = new System.Drawing.Size(1293, 209);
             this.PlaneDataGrid.TabIndex = 3;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 228);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // databaseDataSet
-            // 
-            this.databaseDataSet.DataSetName = "DatabaseDataSet";
-            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // flightInfoBindingSource
-            // 
-            this.flightInfoBindingSource.DataMember = "FlightInfo";
-            this.flightInfoBindingSource.DataSource = this.databaseDataSet;
-            // 
-            // flightInfoTableAdapter
-            // 
-            this.flightInfoTableAdapter.ClearBeforeFill = true;
             // 
             // dateDataGridViewTextBoxColumn
             // 
@@ -172,19 +149,42 @@
             this.Delete.Text = "Delete";
             this.Delete.UseColumnTextForButtonValue = true;
             // 
+            // flightInfoBindingSource
+            // 
+            this.flightInfoBindingSource.DataMember = "FlightInfo";
+            this.flightInfoBindingSource.DataSource = this.databaseDataSet;
+            // 
+            // databaseDataSet
+            // 
+            this.databaseDataSet.DataSetName = "DatabaseDataSet";
+            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // AddFlightButton
+            // 
+            this.AddFlightButton.Location = new System.Drawing.Point(12, 214);
+            this.AddFlightButton.Name = "AddFlightButton";
+            this.AddFlightButton.Size = new System.Drawing.Size(75, 23);
+            this.AddFlightButton.TabIndex = 4;
+            this.AddFlightButton.Text = "Add flight";
+            this.AddFlightButton.UseVisualStyleBackColor = true;
+            // 
+            // flightInfoTableAdapter
+            // 
+            this.flightInfoTableAdapter.ClearBeforeFill = true;
+            // 
             // FlightForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1305, 360);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.AddFlightButton);
             this.Controls.Add(this.PlaneDataGrid);
             this.Name = "FlightForm";
             this.Text = "FlightForm";
             this.Load += new System.EventHandler(this.FlightForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PlaneDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.flightInfoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -192,7 +192,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView PlaneDataGrid;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button AddFlightButton;
         private DatabaseDataSet databaseDataSet;
         private System.Windows.Forms.BindingSource flightInfoBindingSource;
         private DatabaseDataSetTableAdapters.FlightInfoTableAdapter flightInfoTableAdapter;

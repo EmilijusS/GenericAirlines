@@ -99,6 +99,7 @@
             // 
             // BirthDatePicker
             // 
+            this.BirthDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.BirthDatePicker.Location = new System.Drawing.Point(83, 64);
             this.BirthDatePicker.Name = "BirthDatePicker";
             this.BirthDatePicker.Size = new System.Drawing.Size(144, 20);
