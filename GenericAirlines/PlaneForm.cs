@@ -68,8 +68,11 @@ namespace GenericAirlines
             }
                 
             var editPlaneForm = new AddEditPlaneForm(plane);
+            this.Enabled = false;
 
-            editPlaneForm.FormClosed += (a, b) => PlaneForm_Load(a, b);
+            editPlaneForm.FormClosed += (a, b) => { PlaneForm_Load(a, b);
+                this.Enabled = true;
+            };
             editPlaneForm.Show();
         }
 

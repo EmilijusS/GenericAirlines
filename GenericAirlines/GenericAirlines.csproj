@@ -91,6 +91,12 @@
     <Compile Include="AddFlightForm.Designer.cs">
       <DependentUpon>AddFlightForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddRouteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddRouteForm.Designer.cs">
+      <DependentUpon>AddRouteForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AirlinesModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -161,6 +167,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Route.cs">
+      <DependentUpon>AirlinesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectRouteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectRouteForm.Designer.cs">
+      <DependentUpon>SelectRouteForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddEditAttendantForm.resx">
       <DependentUpon>AddEditAttendantForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddFlightForm.resx">
       <DependentUpon>AddFlightForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddRouteForm.resx">
+      <DependentUpon>AddRouteForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeesForm.resx">
       <DependentUpon>EmployeesForm.cs</DependentUpon>
@@ -194,6 +212,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SelectRouteForm.resx">
+      <DependentUpon>SelectRouteForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="AirlinesModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AirlinesModel.Designer.cs</LastGenOutput>

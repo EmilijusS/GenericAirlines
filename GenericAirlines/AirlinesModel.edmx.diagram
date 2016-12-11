@@ -17,6 +17,8 @@
         <InheritanceConnector EntityType="DatabaseModel.Pilot" />
         <InheritanceConnector EntityType="DatabaseModel.Pilot" />
         <InheritanceConnector EntityType="DatabaseModel.Attendant" />
+        <EntityTypeShape EntityType="DatabaseModel.Route" Width="1.5" PointX="8.375" PointY="0.875" />
+        <AssociationConnector Association="DatabaseModel.FK_Flight_ToRoute" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

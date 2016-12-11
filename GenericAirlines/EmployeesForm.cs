@@ -113,8 +113,11 @@ namespace GenericAirlines
             }
 
             var editPlaneForm = new AddEditPilotForm(pilot);
+            this.Enabled = false;
 
-            editPlaneForm.FormClosed += (a, b) => EmployeesForm_Load(a, b);
+            editPlaneForm.FormClosed += (a, b) => { EmployeesForm_Load(a, b);
+                this.Enabled = true;
+            };
             editPlaneForm.Show();
         }
 
@@ -129,8 +132,11 @@ namespace GenericAirlines
             }
 
             var editAttendantForm = new AddEditAttendantForm(attendant);
+            this.Enabled = false;
 
-            editAttendantForm.FormClosed += (a, b) => EmployeesForm_Load(a, b);
+            editAttendantForm.FormClosed += (a, b) => { EmployeesForm_Load(a, b);
+                this.Enabled = true;
+            };
             editAttendantForm.Show();
         }
     }

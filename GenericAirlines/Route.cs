@@ -12,25 +12,21 @@ namespace GenericAirlines
     using System;
     using System.Collections.Generic;
     
-    public partial class Flight
+    public partial class Route
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Flight()
+        public Route()
         {
-            this.Employees = new HashSet<Employee>();
-            this.Passengers = new HashSet<Passenger>();
+            this.Flights = new HashSet<Flight>();
         }
     
         public int Id { get; set; }
-        public string Plane_id { get; set; }
-        public System.DateTime Date { get; set; }
-        public int Route_id { get; set; }
+        public System.TimeSpan Departure { get; set; }
+        public System.TimeSpan Arrival { get; set; }
+        public string Origin { get; set; }
+        public string Destination { get; set; }
     
-        public virtual Plane Plane { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employees { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Passenger> Passengers { get; set; }
-        public virtual Route Route { get; set; }
+        public virtual ICollection<Flight> Flights { get; set; }
     }
 }
