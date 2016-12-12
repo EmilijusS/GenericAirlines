@@ -12,8 +12,8 @@ namespace GenericAirlines
 {
     public partial class SelectRouteForm : Form
     {
-        private readonly int SelectColumnIndex = 4;
-        private readonly int DeleteColumnIndex = 5;
+        private const int SelectColumnIndex = 2;
+        private const int DeleteColumnIndex = 3;
 
         private Route _route;
 
@@ -27,7 +27,6 @@ namespace GenericAirlines
         {
             // TODO: This line of code loads data into the 'databaseDataSet.Route' table. You can move, or remove it, as needed.
             this.routeTableAdapter.Fill(this.databaseDataSet.Route);
-
         }
 
         private void AddRouteButton_Click(object sender, EventArgs e)
@@ -72,10 +71,8 @@ namespace GenericAirlines
         {
             var d = (DataRowView)PlaneDataGrid.Rows[rowIndex].DataBoundItem;
             _route.Id = (int)d.Row[0];
-            _route.Departure = (TimeSpan) d.Row[1];
-            _route.Arrival = (TimeSpan) d.Row[2];
-            _route.Origin = (string) d.Row[3];
-            _route.Destination = (string) d.Row[4];
+            _route.Origin = (string) d.Row[1];
+            _route.Destination = (string) d.Row[2];
 
             this.Close();
         }

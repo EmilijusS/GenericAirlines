@@ -16,7 +16,7 @@ namespace GenericAirlines
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FlightForm());
+            Application.Run(new AddFlightForm());
         }
     }
 }

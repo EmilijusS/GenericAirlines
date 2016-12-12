@@ -28,54 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.OriginTextBox = new System.Windows.Forms.TextBox();
-            this.DestinationTextBox = new System.Windows.Forms.TextBox();
-            this.DepartureTimeBox = new System.Windows.Forms.DateTimePicker();
-            this.ArrivalTimeBox = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.ConfirmButton = new System.Windows.Forms.Button();
+            this.AddLocationButton = new System.Windows.Forms.Button();
+            this.OriginBox = new System.Windows.Forms.ComboBox();
+            this.DestinationBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // OriginTextBox
-            // 
-            this.OriginTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.OriginTextBox.Location = new System.Drawing.Point(73, 12);
-            this.OriginTextBox.Name = "OriginTextBox";
-            this.OriginTextBox.Size = new System.Drawing.Size(54, 20);
-            this.OriginTextBox.TabIndex = 0;
-            // 
-            // DestinationTextBox
-            // 
-            this.DestinationTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.DestinationTextBox.Location = new System.Drawing.Point(73, 38);
-            this.DestinationTextBox.Name = "DestinationTextBox";
-            this.DestinationTextBox.Size = new System.Drawing.Size(54, 20);
-            this.DestinationTextBox.TabIndex = 1;
-            // 
-            // DepartureTimeBox
-            // 
-            this.DepartureTimeBox.CustomFormat = "HH:mm";
-            this.DepartureTimeBox.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DepartureTimeBox.Location = new System.Drawing.Point(73, 64);
-            this.DepartureTimeBox.Name = "DepartureTimeBox";
-            this.DepartureTimeBox.ShowUpDown = true;
-            this.DepartureTimeBox.Size = new System.Drawing.Size(54, 20);
-            this.DepartureTimeBox.TabIndex = 2;
-            this.DepartureTimeBox.Value = new System.DateTime(2016, 12, 10, 0, 0, 0, 0);
-            // 
-            // ArrivalTimeBox
-            // 
-            this.ArrivalTimeBox.CustomFormat = "HH:mm";
-            this.ArrivalTimeBox.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.ArrivalTimeBox.Location = new System.Drawing.Point(73, 90);
-            this.ArrivalTimeBox.Name = "ArrivalTimeBox";
-            this.ArrivalTimeBox.ShowUpDown = true;
-            this.ArrivalTimeBox.Size = new System.Drawing.Size(54, 20);
-            this.ArrivalTimeBox.TabIndex = 3;
-            this.ArrivalTimeBox.Value = new System.DateTime(2016, 12, 11, 0, 0, 0, 0);
             // 
             // label1
             // 
@@ -95,24 +54,6 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Destination";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 67);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Departure";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 93);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Arrival";
-            // 
             // ConfirmButton
             // 
             this.ConfirmButton.Location = new System.Drawing.Point(36, 128);
@@ -123,20 +64,45 @@
             this.ConfirmButton.UseVisualStyleBackColor = true;
             this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
             // 
+            // AddLocationButton
+            // 
+            this.AddLocationButton.Location = new System.Drawing.Point(28, 64);
+            this.AddLocationButton.Name = "AddLocationButton";
+            this.AddLocationButton.Size = new System.Drawing.Size(99, 23);
+            this.AddLocationButton.TabIndex = 9;
+            this.AddLocationButton.Text = "Add new location";
+            this.AddLocationButton.UseVisualStyleBackColor = true;
+            this.AddLocationButton.Click += new System.EventHandler(this.AddLocationButton_Click);
+            // 
+            // OriginBox
+            // 
+            this.OriginBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.OriginBox.FormattingEnabled = true;
+            this.OriginBox.Location = new System.Drawing.Point(73, 12);
+            this.OriginBox.Name = "OriginBox";
+            this.OriginBox.Size = new System.Drawing.Size(52, 21);
+            this.OriginBox.TabIndex = 10;
+            // 
+            // DestinationBox
+            // 
+            this.DestinationBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DestinationBox.FormattingEnabled = true;
+            this.DestinationBox.Location = new System.Drawing.Point(73, 38);
+            this.DestinationBox.Name = "DestinationBox";
+            this.DestinationBox.Size = new System.Drawing.Size(52, 21);
+            this.DestinationBox.TabIndex = 11;
+            // 
             // AddRouteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(145, 170);
+            this.Controls.Add(this.DestinationBox);
+            this.Controls.Add(this.OriginBox);
+            this.Controls.Add(this.AddLocationButton);
             this.Controls.Add(this.ConfirmButton);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.ArrivalTimeBox);
-            this.Controls.Add(this.DepartureTimeBox);
-            this.Controls.Add(this.DestinationTextBox);
-            this.Controls.Add(this.OriginTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AddRouteForm";
             this.Text = "Add route";
@@ -147,15 +113,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox OriginTextBox;
-        private System.Windows.Forms.TextBox DestinationTextBox;
-        private System.Windows.Forms.DateTimePicker DepartureTimeBox;
-        private System.Windows.Forms.DateTimePicker ArrivalTimeBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button ConfirmButton;
+        private System.Windows.Forms.Button AddLocationButton;
+        private System.Windows.Forms.ComboBox OriginBox;
+        private System.Windows.Forms.ComboBox DestinationBox;
     }
 }

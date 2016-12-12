@@ -12,6 +12,12 @@ namespace GenericAirlines
 {
     public partial class FlightForm : Form
     {
+        private const int PlaneColumnIndex = 5;
+        private const int PilotsColumnIndex = 6;
+        private const int AttendantsColumnIndex = 7;
+        private const int PassengersColumnIndex = 8;
+        private const int DeleteColumnIndex = 9;
+
         public FlightForm()
         {
             InitializeComponent();
@@ -19,6 +25,8 @@ namespace GenericAirlines
 
         private void FlightForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'databaseDataSet.FlightInfo' table. You can move, or remove it, as needed.
+            this.flightInfoTableAdapter.Fill(this.databaseDataSet.FlightInfo);
             // TODO: This line of code loads data into the 'databaseDataSet.FlightInfo' table. You can move, or remove it, as needed.
             this.flightInfoTableAdapter.Fill(this.databaseDataSet.FlightInfo);
         }
@@ -32,6 +40,32 @@ namespace GenericAirlines
                 this.Enabled = true;
             };
             addFlightForm.Show();
+        }
+
+        private void FlightDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                switch (e.ColumnIndex)
+                {
+                    case DeleteColumnIndex:
+                        DeleteFlight(e.RowIndex);
+                        break;
+                }
+            }
+        }
+
+        private void DeleteFlight(int rowIndex)
+        {
+            var d = (DataRowView)FlightDataGrid.Rows[rowIndex].DataBoundItem;
+
+            using (var db = new AirlinesContext())
+            {
+                db.Flights.Remove(db.Flights.Find(d.Row[0]));
+                db.SaveChanges();
+            }
+
+            FlightForm_Load(this, new EventArgs());
         }
     }
 }

@@ -21,12 +21,12 @@ namespace GenericAirlines
         }
     
         public int Id { get; set; }
-        public System.TimeSpan Departure { get; set; }
-        public System.TimeSpan Arrival { get; set; }
         public string Origin { get; set; }
         public string Destination { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Flight> Flights { get; set; }
+        public virtual Location OriginLocation { get; set; }
+        public virtual Location DestinationLocation { get; set; }
     }
 }

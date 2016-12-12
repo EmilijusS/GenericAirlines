@@ -35,9 +35,17 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Departure" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="Arrival" Type="datetimeoffset" Precision="7" Nullable="false" />
           <Property Name="Plane_id" Type="nvarchar" MaxLength="10" />
           <Property Name="Route_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Location" />
+          </Key>
+          <Property Name="Location" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Timezone" Type="nvarchar" MaxLength="32" />
         </EntityType>
         <EntityType Name="Passenger">
           <Key>
@@ -68,8 +76,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Departure" Type="time" Precision="7" Nullable="false" />
-          <Property Name="Arrival" Type="time" Precision="7" Nullable="false" />
           <Property Name="Origin" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="Destination" Type="char" MaxLength="3" Nullable="false" />
         </EntityType>
@@ -153,6 +159,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Route_ToLocation1">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Route" Type="Self.Route" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Location" />
+            </Principal>
+            <Dependent Role="Route">
+              <PropertyRef Name="Origin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Route_ToLocation2">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Route" Type="Self.Route" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Location" />
+            </Principal>
+            <Dependent Role="Route">
+              <PropertyRef Name="Destination" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Ticket_ToFlight">
           <End Role="Flight" Type="Self.Flight" Multiplicity="1" />
           <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
@@ -182,6 +212,7 @@
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee_Flight" EntityType="Self.Employee_Flight" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Flight" EntityType="Self.Flight" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Passenger" EntityType="Self.Passenger" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pilot" EntityType="Self.Pilot" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plane" EntityType="Self.Plane" Schema="dbo" store:Type="Tables" />
@@ -210,6 +241,14 @@
           <AssociationSet Name="FK_Pilot_ToEmployee" Association="Self.FK_Pilot_ToEmployee">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Pilot" EntitySet="Pilot" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Route_ToLocation1" Association="Self.FK_Route_ToLocation1">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Route" EntitySet="Route" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Route_ToLocation2" Association="Self.FK_Route_ToLocation2">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Route" EntitySet="Route" />
           </AssociationSet>
           <AssociationSet Name="FK_Ticket_ToFlight" Association="Self.FK_Ticket_ToFlight">
             <End Role="Flight" EntitySet="Flight" />
@@ -247,9 +286,10 @@
           <NavigationProperty Name="Plane" Relationship="Self.FK_Flight_ToPlane" FromRole="Flight" ToRole="Plane" />
           <NavigationProperty Name="Employees" Relationship="Self.Employee_Flight" FromRole="Flight" ToRole="Employee" />
           <NavigationProperty Name="Passengers" Relationship="Self.Ticket" FromRole="Flight" ToRole="Passenger" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Route_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Route" Relationship="DatabaseModel.FK_Flight_ToRoute" FromRole="Flight" ToRole="Route" />
+          <Property Name="Departure" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="Arrival" Type="DateTimeOffset" Nullable="false" Precision="7" />
         </EntityType>
         <EntityType Name="Passenger">
           <Key>
@@ -315,17 +355,26 @@
             <End Role="Route" EntitySet="Routes" />
             <End Role="Flight" EntitySet="Flights" />
           </AssociationSet>
+          <EntitySet Name="Locations" EntityType="DatabaseModel.Location" />
+          <AssociationSet Name="FK_Route_ToLocation1" Association="DatabaseModel.FK_Route_ToLocation1">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Route" EntitySet="Routes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Route_ToLocation2" Association="DatabaseModel.FK_Route_ToLocation2">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Route" EntitySet="Routes" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Route">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Departure" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="Arrival" Type="Time" Nullable="false" Precision="7" />
           <Property Name="Origin" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
           <Property Name="Destination" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Flights" Relationship="DatabaseModel.FK_Flight_ToRoute" FromRole="Route" ToRole="Flight" />
+          <NavigationProperty Name="OriginLocation" Relationship="DatabaseModel.FK_Route_ToLocation1" FromRole="Route" ToRole="Location" />
+          <NavigationProperty Name="DestinationLocation" Relationship="DatabaseModel.FK_Route_ToLocation2" FromRole="Route" ToRole="Location" />
         </EntityType>
         <Association Name="FK_Flight_ToRoute">
           <End Type="DatabaseModel.Route" Role="Route" Multiplicity="1" />
@@ -336,6 +385,39 @@
             </Principal>
             <Dependent Role="Flight">
               <PropertyRef Name="Route_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Airport" />
+          </Key>
+          <Property Name="Airport" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Timezone" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Routes" Relationship="DatabaseModel.FK_Route_ToLocation1" FromRole="Location" ToRole="Route" />
+          <NavigationProperty Name="Routes1" Relationship="DatabaseModel.FK_Route_ToLocation2" FromRole="Location" ToRole="Route" />
+        </EntityType>
+        <Association Name="FK_Route_ToLocation1">
+          <End Type="DatabaseModel.Location" Role="Location" Multiplicity="1" />
+          <End Type="DatabaseModel.Route" Role="Route" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Airport" />
+            </Principal>
+            <Dependent Role="Route">
+              <PropertyRef Name="Origin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Route_ToLocation2">
+          <End Type="DatabaseModel.Location" Role="Location" Multiplicity="1" />
+          <End Type="DatabaseModel.Route" Role="Route" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Airport" />
+            </Principal>
+            <Dependent Role="Route">
+              <PropertyRef Name="Destination" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -372,8 +454,9 @@
           <EntitySetMapping Name="Flights">
             <EntityTypeMapping TypeName="DatabaseModel.Flight">
               <MappingFragment StoreEntitySet="Flight">
+                <ScalarProperty Name="Arrival" ColumnName="Arrival" />
+                <ScalarProperty Name="Departure" ColumnName="Departure" />
                 <ScalarProperty Name="Route_id" ColumnName="Route_id" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Plane_id" ColumnName="Plane_id" />
               </MappingFragment>
@@ -418,9 +501,15 @@
               <MappingFragment StoreEntitySet="Route">
                 <ScalarProperty Name="Destination" ColumnName="Destination" />
                 <ScalarProperty Name="Origin" ColumnName="Origin" />
-                <ScalarProperty Name="Arrival" ColumnName="Arrival" />
-                <ScalarProperty Name="Departure" ColumnName="Departure" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="DatabaseModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="Timezone" ColumnName="Timezone" />
+                <ScalarProperty Name="Airport" ColumnName="Location" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

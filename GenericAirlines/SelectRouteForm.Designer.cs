@@ -29,35 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.databaseDataSet = new GenericAirlines.DatabaseDataSet();
-            this.routeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.routeTableAdapter = new GenericAirlines.DatabaseDataSetTableAdapters.RouteTableAdapter();
             this.PlaneDataGrid = new System.Windows.Forms.DataGridView();
             this.originDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.destinationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.departureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.arrivalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Select = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.routeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseDataSet = new GenericAirlines.DatabaseDataSet();
             this.AddRouteButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.routeBindingSource)).BeginInit();
+            this.routeTableAdapter = new GenericAirlines.DatabaseDataSetTableAdapters.RouteTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.PlaneDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.routeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             this.SuspendLayout();
-            // 
-            // databaseDataSet
-            // 
-            this.databaseDataSet.DataSetName = "DatabaseDataSet";
-            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // routeBindingSource
-            // 
-            this.routeBindingSource.DataMember = "Route";
-            this.routeBindingSource.DataSource = this.databaseDataSet;
-            // 
-            // routeTableAdapter
-            // 
-            this.routeTableAdapter.ClearBeforeFill = true;
             // 
             // PlaneDataGrid
             // 
@@ -71,8 +55,6 @@
             this.PlaneDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.originDataGridViewTextBoxColumn,
             this.destinationDataGridViewTextBoxColumn,
-            this.departureDataGridViewTextBoxColumn,
-            this.arrivalDataGridViewTextBoxColumn,
             this.Select,
             this.Delete});
             this.PlaneDataGrid.DataSource = this.routeBindingSource;
@@ -80,7 +62,7 @@
             this.PlaneDataGrid.Name = "PlaneDataGrid";
             this.PlaneDataGrid.ReadOnly = true;
             this.PlaneDataGrid.RowHeadersVisible = false;
-            this.PlaneDataGrid.Size = new System.Drawing.Size(596, 199);
+            this.PlaneDataGrid.Size = new System.Drawing.Size(562, 199);
             this.PlaneDataGrid.TabIndex = 4;
             this.PlaneDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PlaneDataGrid_CellContentClick);
             // 
@@ -97,20 +79,6 @@
             this.destinationDataGridViewTextBoxColumn.HeaderText = "Destination";
             this.destinationDataGridViewTextBoxColumn.Name = "destinationDataGridViewTextBoxColumn";
             this.destinationDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // departureDataGridViewTextBoxColumn
-            // 
-            this.departureDataGridViewTextBoxColumn.DataPropertyName = "Departure";
-            this.departureDataGridViewTextBoxColumn.HeaderText = "Departure";
-            this.departureDataGridViewTextBoxColumn.Name = "departureDataGridViewTextBoxColumn";
-            this.departureDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // arrivalDataGridViewTextBoxColumn
-            // 
-            this.arrivalDataGridViewTextBoxColumn.DataPropertyName = "Arrival";
-            this.arrivalDataGridViewTextBoxColumn.HeaderText = "Arrival";
-            this.arrivalDataGridViewTextBoxColumn.Name = "arrivalDataGridViewTextBoxColumn";
-            this.arrivalDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Select
             // 
@@ -130,6 +98,16 @@
             this.Delete.Text = "Delete";
             this.Delete.UseColumnTextForButtonValue = true;
             // 
+            // routeBindingSource
+            // 
+            this.routeBindingSource.DataMember = "Route";
+            this.routeBindingSource.DataSource = this.databaseDataSet;
+            // 
+            // databaseDataSet
+            // 
+            this.databaseDataSet.DataSetName = "DatabaseDataSet";
+            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // AddRouteButton
             // 
             this.AddRouteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -141,34 +119,38 @@
             this.AddRouteButton.UseVisualStyleBackColor = true;
             this.AddRouteButton.Click += new System.EventHandler(this.AddRouteButton_Click);
             // 
+            // routeTableAdapter
+            // 
+            this.routeTableAdapter.ClearBeforeFill = true;
+            // 
             // SelectRouteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(596, 240);
+            this.ClientSize = new System.Drawing.Size(562, 240);
             this.Controls.Add(this.AddRouteButton);
             this.Controls.Add(this.PlaneDataGrid);
             this.Name = "SelectRouteForm";
-            this.Text = "SelectRouteForm";
+            this.Text = "Select route";
             this.Load += new System.EventHandler(this.SelectRouteForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.routeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlaneDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.routeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+        private System.Windows.Forms.DataGridView PlaneDataGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn departureDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn arrivalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button AddRouteButton;
         private DatabaseDataSet databaseDataSet;
         private System.Windows.Forms.BindingSource routeBindingSource;
         private DatabaseDataSetTableAdapters.RouteTableAdapter routeTableAdapter;
-        private System.Windows.Forms.DataGridView PlaneDataGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn originDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn destinationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn departureDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn arrivalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Select;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
-        private System.Windows.Forms.Button AddRouteButton;
     }
 }

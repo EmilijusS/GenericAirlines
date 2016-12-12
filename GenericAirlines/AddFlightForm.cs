@@ -20,8 +20,6 @@ namespace GenericAirlines
             InitializeComponent();
             OriginTextBox.TextAlign = HorizontalAlignment.Center;
             DestinationTextBox.TextAlign = HorizontalAlignment.Center;
-            DepartureTextBox.TextAlign = HorizontalAlignment.Center;
-            ArrivalTextBox.TextAlign = HorizontalAlignment.Center;
             RepeatBox.SelectedIndex = 0;
         }
 
@@ -34,8 +32,6 @@ namespace GenericAirlines
             {
                 OriginTextBox.Text = _route.Origin;
                 DestinationTextBox.Text = _route.Destination;
-                DepartureTextBox.Text = _route.Departure.ToString();
-                ArrivalTextBox.Text = _route.Arrival.ToString();
                 this.Enabled = true;
             };
 
@@ -62,25 +58,29 @@ namespace GenericAirlines
             using (var db = new AirlinesContext())
             {
                 Flight flight;
-                var date = DatePicker.Value;
+                var date1 = DepartureBox.Value;
+                var date2 = ArrivalBox.Value;
 
                 do
                 {
                     flight = db.Flights.Create();
                     flight.Route_id = _route.Id;
-                    flight.Date = date;
+                    flight.Departure = date1;
+                    flight.Arrival = date2;
                     db.Flights.Add(flight);
 
                     if (RepeatBox.SelectedIndex == 0)
                     {
-                        date = date.AddDays(1);
+                        date1 = date1.AddDays(1);
+                        date2 = date2.AddDays(1);
                     }
                     else
                     {
-                        date = date.AddDays(7);
+                        date1 = date1.AddDays(7);
+                        date2 = date2.AddDays(7);
                     }
 
-                } while (CheckBox.Checked && DatePicker.Value.AddMonths((int)MonthBox.Value) > date);
+                } while (CheckBox.Checked && DepartureBox.Value.AddMonths((int)MonthBox.Value) > date1);
 
                 db.SaveChanges();
             }

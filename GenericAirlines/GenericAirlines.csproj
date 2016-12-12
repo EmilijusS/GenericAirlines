@@ -91,6 +91,12 @@
     <Compile Include="AddFlightForm.Designer.cs">
       <DependentUpon>AddFlightForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddLocationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddLocationForm.Designer.cs">
+      <DependentUpon>AddLocationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddRouteForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,9 @@
     <Compile Include="FlightForm.Designer.cs">
       <DependentUpon>FlightForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Location.cs">
+      <DependentUpon>AirlinesModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Passenger.cs">
       <DependentUpon>AirlinesModel.tt</DependentUpon>
     </Compile>
@@ -181,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddFlightForm.resx">
       <DependentUpon>AddFlightForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddLocationForm.resx">
+      <DependentUpon>AddLocationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddRouteForm.resx">
       <DependentUpon>AddRouteForm.cs</DependentUpon>
