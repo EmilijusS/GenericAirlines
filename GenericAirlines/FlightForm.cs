@@ -12,11 +12,11 @@ namespace GenericAirlines
 {
     public partial class FlightForm : Form
     {
-        private const int PlaneColumnIndex = 5;
-        private const int PilotsColumnIndex = 6;
-        private const int AttendantsColumnIndex = 7;
-        private const int PassengersColumnIndex = 8;
-        private const int DeleteColumnIndex = 9;
+        private const int PlaneColumnIndex = 4;
+        private const int PilotsColumnIndex = 5;
+        private const int AttendantsColumnIndex = 6;
+        private const int PassengersColumnIndex = 7;
+        private const int DeleteColumnIndex = 8;
 
         public FlightForm()
         {
@@ -25,8 +25,6 @@ namespace GenericAirlines
 
         private void FlightForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'databaseDataSet.FlightInfo' table. You can move, or remove it, as needed.
-            this.flightInfoTableAdapter.Fill(this.databaseDataSet.FlightInfo);
             // TODO: This line of code loads data into the 'databaseDataSet.FlightInfo' table. You can move, or remove it, as needed.
             this.flightInfoTableAdapter.Fill(this.databaseDataSet.FlightInfo);
         }

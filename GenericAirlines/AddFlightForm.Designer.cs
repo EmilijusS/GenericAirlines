@@ -174,7 +174,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(43, 100);
+            this.label3.Location = new System.Drawing.Point(34, 99);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 6;
@@ -183,7 +183,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(58, 133);
+            this.label4.Location = new System.Drawing.Point(49, 132);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 7;
@@ -193,21 +193,21 @@
             // 
             this.DepartureBox.CustomFormat = "yyyy-MM-dd HH:mm";
             this.DepartureBox.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DepartureBox.Location = new System.Drawing.Point(104, 97);
+            this.DepartureBox.Location = new System.Drawing.Point(95, 96);
             this.DepartureBox.Name = "DepartureBox";
-            this.DepartureBox.Size = new System.Drawing.Size(108, 20);
+            this.DepartureBox.Size = new System.Drawing.Size(146, 20);
             this.DepartureBox.TabIndex = 17;
-            this.DepartureBox.Value = new System.DateTime(2016, 12, 12, 20, 56, 12, 0);
+            this.DepartureBox.Value = new System.DateTime(2017, 1, 1, 0, 0, 0, 0);
             // 
             // ArrivalBox
             // 
             this.ArrivalBox.CustomFormat = "yyyy-MM-dd HH:mm";
             this.ArrivalBox.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.ArrivalBox.Location = new System.Drawing.Point(104, 130);
+            this.ArrivalBox.Location = new System.Drawing.Point(95, 129);
             this.ArrivalBox.Name = "ArrivalBox";
-            this.ArrivalBox.Size = new System.Drawing.Size(108, 20);
+            this.ArrivalBox.Size = new System.Drawing.Size(146, 20);
             this.ArrivalBox.TabIndex = 18;
-            this.ArrivalBox.Value = new System.DateTime(2016, 12, 12, 20, 56, 17, 0);
+            this.ArrivalBox.Value = new System.DateTime(2017, 1, 1, 0, 0, 0, 0);
             // 
             // AddFlightForm
             // 

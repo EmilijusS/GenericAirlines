@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.FlightDataGrid = new System.Windows.Forms.DataGridView();
             this.AddFlightButton = new System.Windows.Forms.Button();
             this.databaseDataSet = new GenericAirlines.DatabaseDataSet();
@@ -104,6 +106,8 @@
             // departureDataGridViewTextBoxColumn
             // 
             this.departureDataGridViewTextBoxColumn.DataPropertyName = "Departure";
+            dataGridViewCellStyle1.Format = "yyyy-MM-dd HH:mm";
+            this.departureDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.departureDataGridViewTextBoxColumn.HeaderText = "Departure";
             this.departureDataGridViewTextBoxColumn.Name = "departureDataGridViewTextBoxColumn";
             this.departureDataGridViewTextBoxColumn.ReadOnly = true;
@@ -111,6 +115,8 @@
             // arrivalDataGridViewTextBoxColumn
             // 
             this.arrivalDataGridViewTextBoxColumn.DataPropertyName = "Arrival";
+            dataGridViewCellStyle2.Format = "yyyy-MM-dd HH:mm";
+            this.arrivalDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.arrivalDataGridViewTextBoxColumn.HeaderText = "Arrival";
             this.arrivalDataGridViewTextBoxColumn.Name = "arrivalDataGridViewTextBoxColumn";
             this.arrivalDataGridViewTextBoxColumn.ReadOnly = true;

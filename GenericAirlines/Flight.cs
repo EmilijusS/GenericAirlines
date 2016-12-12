@@ -24,8 +24,8 @@ namespace GenericAirlines
         public int Id { get; set; }
         public string Plane_id { get; set; }
         public int Route_id { get; set; }
-        public System.DateTimeOffset Departure { get; set; }
-        public System.DateTimeOffset Arrival { get; set; }
+        public System.DateTime Departure { get; set; }
+        public System.DateTime Arrival { get; set; }
     
         public virtual Plane Plane { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -35,8 +35,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Departure" Type="datetimeoffset" Precision="7" Nullable="false" />
-          <Property Name="Arrival" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="Departure" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Arrival" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Plane_id" Type="nvarchar" MaxLength="10" />
           <Property Name="Route_id" Type="int" Nullable="false" />
         </EntityType>
@@ -288,8 +288,8 @@
           <NavigationProperty Name="Passengers" Relationship="Self.Ticket" FromRole="Flight" ToRole="Passenger" />
           <Property Name="Route_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Route" Relationship="DatabaseModel.FK_Flight_ToRoute" FromRole="Flight" ToRole="Route" />
-          <Property Name="Departure" Type="DateTimeOffset" Nullable="false" Precision="7" />
-          <Property Name="Arrival" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="Departure" Type="DateTime" Nullable="false" />
+          <Property Name="Arrival" Type="DateTime" Nullable="false" />
         </EntityType>
         <EntityType Name="Passenger">
           <Key>
