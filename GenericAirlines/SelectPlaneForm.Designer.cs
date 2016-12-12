@@ -33,11 +33,11 @@
             this.planeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.planeTableAdapter = new GenericAirlines.DatabaseDataSetTableAdapters.PlaneTableAdapter();
             this.PlaneDataGrid = new System.Windows.Forms.DataGridView();
-            this.ConfirmButton = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ConfirmButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.planeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlaneDataGrid)).BeginInit();
@@ -79,16 +79,6 @@
             this.PlaneDataGrid.TabIndex = 3;
             this.PlaneDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PlaneDataGrid_CellContentClick);
             // 
-            // ConfirmButton
-            // 
-            this.ConfirmButton.Location = new System.Drawing.Point(12, 192);
-            this.ConfirmButton.Name = "ConfirmButton";
-            this.ConfirmButton.Size = new System.Drawing.Size(75, 23);
-            this.ConfirmButton.TabIndex = 4;
-            this.ConfirmButton.Text = "Confirm";
-            this.ConfirmButton.UseVisualStyleBackColor = true;
-            this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -123,6 +113,17 @@
             // 
             this.Select.HeaderText = "Select";
             this.Select.Name = "Select";
+            // 
+            // ConfirmButton
+            // 
+            this.ConfirmButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ConfirmButton.Location = new System.Drawing.Point(12, 192);
+            this.ConfirmButton.Name = "ConfirmButton";
+            this.ConfirmButton.Size = new System.Drawing.Size(75, 23);
+            this.ConfirmButton.TabIndex = 4;
+            this.ConfirmButton.Text = "Confirm";
+            this.ConfirmButton.UseVisualStyleBackColor = true;
+            this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
             // 
             // SelectPlaneForm
             // 

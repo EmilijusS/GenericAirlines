@@ -44,15 +44,12 @@ namespace GenericAirlines
         {
             if (e.RowIndex >= 0)
             {
-                switch (e.ColumnIndex)
-                {
-                    case DeleteColumnIndex:
-                        DeleteFlight(e.RowIndex);
-                        break;
-                    case PlaneColumnIndex:
-                        SelectPlane(e.RowIndex);
-                        break;
-                }
+                if(e.ColumnIndex == DeleteColumnIndex)
+                    DeleteFlight(e.RowIndex);
+                else if (e.ColumnIndex == PlaneColumnIndex ||
+                         e.ColumnIndex == PilotsColumnIndex ||
+                         e.ColumnIndex == AttendantsColumnIndex)
+                    EditFlight(e.RowIndex, e.ColumnIndex);
             }
         }
 
@@ -69,22 +66,36 @@ namespace GenericAirlines
             FlightForm_Load(this, new EventArgs());
         }
 
-        private void SelectPlane(int rowIndex)
+        private void EditFlight(int rowIndex, int columnIndex)
         {
             Flight flight;
             var d = (DataRowView)FlightDataGrid.Rows[rowIndex].DataBoundItem;
+            Form form;
 
             using (var db = new AirlinesContext())
             {
                 flight = db.Flights.Find(d.Row[0]);
             }
 
-            var SelectPlaneForm = new SelectPlaneForm(flight);
+            switch (columnIndex)
+            {
+                case PlaneColumnIndex:
+                    form = new SelectPlaneForm(flight);
+                    break;
+                case PilotsColumnIndex:
+                    form = new SelectPilotsForm(flight);
+                    break;
+                default:
+                    form = new ErrorForm();
+                    break;
+            }
+
             this.Enabled = false;
 
-            SelectPlaneForm.FormClosed += (a, b) => this.Enabled = true;
+            form.FormClosed += (a, b) => this.Enabled = true;
 
-            SelectPlaneForm.Show();
+            form.Show();
         }
+
     }
 }

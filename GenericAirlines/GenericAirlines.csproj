@@ -121,6 +121,18 @@
     <Compile Include="Attendant.cs">
       <DependentUpon>AirlinesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ErrorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorForm.Designer.cs">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectPilotsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectPilotsForm.Designer.cs">
+      <DependentUpon>SelectPilotsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SelectPlaneForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +214,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddRouteForm.resx">
       <DependentUpon>AddRouteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorForm.resx">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectPilotsForm.resx">
+      <DependentUpon>SelectPilotsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectPlaneForm.resx">
       <DependentUpon>SelectPlaneForm.cs</DependentUpon>
