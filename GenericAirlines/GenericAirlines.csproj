@@ -121,6 +121,12 @@
     <Compile Include="Attendant.cs">
       <DependentUpon>AirlinesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SelectPlaneForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectPlaneForm.Designer.cs">
+      <DependentUpon>SelectPlaneForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddRouteForm.resx">
       <DependentUpon>AddRouteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectPlaneForm.resx">
+      <DependentUpon>SelectPlaneForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeesForm.resx">
       <DependentUpon>EmployeesForm.cs</DependentUpon>

@@ -49,6 +49,9 @@ namespace GenericAirlines
                     case DeleteColumnIndex:
                         DeleteFlight(e.RowIndex);
                         break;
+                    case PlaneColumnIndex:
+                        SelectPlane(e.RowIndex);
+                        break;
                 }
             }
         }
@@ -64,6 +67,24 @@ namespace GenericAirlines
             }
 
             FlightForm_Load(this, new EventArgs());
+        }
+
+        private void SelectPlane(int rowIndex)
+        {
+            Flight flight;
+            var d = (DataRowView)FlightDataGrid.Rows[rowIndex].DataBoundItem;
+
+            using (var db = new AirlinesContext())
+            {
+                flight = db.Flights.Find(d.Row[0]);
+            }
+
+            var SelectPlaneForm = new SelectPlaneForm(flight);
+            this.Enabled = false;
+
+            SelectPlaneForm.FormClosed += (a, b) => this.Enabled = true;
+
+            SelectPlaneForm.Show();
         }
     }
 }
