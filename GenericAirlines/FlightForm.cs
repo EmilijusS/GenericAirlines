@@ -48,7 +48,8 @@ namespace GenericAirlines
                     DeleteFlight(e.RowIndex);
                 else if (e.ColumnIndex == PlaneColumnIndex ||
                          e.ColumnIndex == PilotsColumnIndex ||
-                         e.ColumnIndex == AttendantsColumnIndex)
+                         e.ColumnIndex == AttendantsColumnIndex ||
+                         e.ColumnIndex == PassengersColumnIndex)
                     EditFlight(e.RowIndex, e.ColumnIndex);
             }
         }
@@ -84,6 +85,12 @@ namespace GenericAirlines
                     break;
                 case PilotsColumnIndex:
                     form = new SelectPilotsForm(flight);
+                    break;
+                case AttendantsColumnIndex:
+                    form = new SelectAttendantsForm(flight);
+                    break;
+                case PassengersColumnIndex:
+                    form = new ViewPassengersForm(flight);
                     break;
                 default:
                     form = new ErrorForm();

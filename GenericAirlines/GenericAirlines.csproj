@@ -103,6 +103,12 @@
     <Compile Include="AddRouteForm.Designer.cs">
       <DependentUpon>AddRouteForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForm.Designer.cs">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AirlinesModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -126,6 +132,12 @@
     </Compile>
     <Compile Include="ErrorForm.Designer.cs">
       <DependentUpon>ErrorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectAttendantsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectAttendantsForm.Designer.cs">
+      <DependentUpon>SelectAttendantsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SelectPilotsForm.cs">
       <SubType>Form</SubType>
@@ -197,6 +209,12 @@
     <Compile Include="SelectRouteForm.Designer.cs">
       <DependentUpon>SelectRouteForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewPassengersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewPassengersForm.Designer.cs">
+      <DependentUpon>ViewPassengersForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddEditAttendantForm.resx">
       <DependentUpon>AddEditAttendantForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,8 +233,14 @@
     <EmbeddedResource Include="AddRouteForm.resx">
       <DependentUpon>AddRouteForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ErrorForm.resx">
       <DependentUpon>ErrorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectAttendantsForm.resx">
+      <DependentUpon>SelectAttendantsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectPilotsForm.resx">
       <DependentUpon>SelectPilotsForm.cs</DependentUpon>
@@ -244,6 +268,9 @@
     </Compile>
     <EmbeddedResource Include="SelectRouteForm.resx">
       <DependentUpon>SelectRouteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPassengersForm.resx">
+      <DependentUpon>ViewPassengersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="AirlinesModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
