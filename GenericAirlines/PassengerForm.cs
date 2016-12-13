@@ -72,9 +72,22 @@ namespace GenericAirlines
                 c.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
 
+            FlightView.Columns["Departure"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
+            FlightView.Columns["Arrival"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
             FlightView.Columns["FlightDuration"].DefaultCellStyle.Format = "hh\\ \\h\\ mm\\ \\m";
             FlightView.Columns["FlightDuration"].HeaderText = "Flight duration";
             FlightView.Columns["PlaneModel"].HeaderText = "Plane model";
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            var searchFlightsForm = new SearchFlightsForm(_email);
+            searchFlightsForm.FormClosed += (a, b) => {
+                PassengerForm_Load(a, b);
+                this.Enabled = true;
+            };
+            searchFlightsForm.Show();
         }
     }
 }

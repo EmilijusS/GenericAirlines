@@ -288,8 +288,8 @@
           <NavigationProperty Name="Passengers" Relationship="Self.Ticket" FromRole="Flight" ToRole="Passenger" />
           <Property Name="Route_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Route" Relationship="DatabaseModel.FK_Flight_ToRoute" FromRole="Flight" ToRole="Route" />
-          <Property Name="Departure" Type="DateTime" Nullable="false" />
-          <Property Name="Arrival" Type="DateTime" Nullable="false" />
+          <Property Name="Departure" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Arrival" Type="DateTime" Nullable="false" Precision="7" />
         </EntityType>
         <EntityType Name="Passenger">
           <Key>
