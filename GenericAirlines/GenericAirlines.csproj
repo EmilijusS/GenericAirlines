@@ -133,6 +133,13 @@
     <Compile Include="ErrorForm.Designer.cs">
       <DependentUpon>ErrorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FlightModel.cs" />
+    <Compile Include="PassengerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PassengerForm.Designer.cs">
+      <DependentUpon>PassengerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SelectAttendantsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ErrorForm.resx">
       <DependentUpon>ErrorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PassengerForm.resx">
+      <DependentUpon>PassengerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectAttendantsForm.resx">
       <DependentUpon>SelectAttendantsForm.cs</DependentUpon>
