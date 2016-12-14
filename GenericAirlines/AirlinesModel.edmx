@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="Email" />
@@ -94,6 +94,7 @@
           </Key>
           <Property Name="Flight_id" Type="int" Nullable="false" />
           <Property Name="Passenger_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Count" Type="int" StoreGeneratedPattern="None" Nullable="false" />
         </EntityType>
         <Association Name="FK_Attendant_ToEmployee">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
@@ -268,10 +269,18 @@
             <End Role="Ticket" EntitySet="Ticket" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <EntityType Name="Attendant" BaseType="DatabaseModel.Employee">
           <Property Name="Height" Type="Byte" Nullable="false" />
           <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -291,14 +300,23 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Plane_id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Plane" Relationship="Self.FK_Flight_ToPlane" FromRole="Flight" ToRole="Plane" />
-          <NavigationProperty Name="Employees" Relationship="Self.Employee_Flight" FromRole="Flight" ToRole="Employee" />
-          <NavigationProperty Name="Passengers" Relationship="Self.Ticket" FromRole="Flight" ToRole="Passenger" />
-          <Property Name="Route_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Route" Relationship="DatabaseModel.FK_Flight_ToRoute" FromRole="Flight" ToRole="Route" />
           <Property Name="Departure" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Arrival" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Plane_id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Route_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Plane" Relationship="Self.FK_Flight_ToPlane" FromRole="Flight" ToRole="Plane" />
+          <NavigationProperty Name="Route" Relationship="Self.FK_Flight_ToRoute" FromRole="Flight" ToRole="Route" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_ToFlight" FromRole="Flight" ToRole="Ticket" />
+          <NavigationProperty Name="Employees" Relationship="Self.Employee_Flight" FromRole="Flight" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Airport" />
+          </Key>
+          <Property Name="Airport" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Timezone" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Routes" Relationship="Self.FK_Route_ToLocation1" FromRole="Location" ToRole="Route" />
+          <NavigationProperty Name="Routes1" Relationship="Self.FK_Route_ToLocation2" FromRole="Location" ToRole="Route" />
         </EntityType>
         <EntityType Name="Passenger">
           <Key>
@@ -307,8 +325,8 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Flights" Relationship="Self.Ticket" FromRole="Passenger" ToRole="Flight" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_ToPassenger" FromRole="Passenger" ToRole="Ticket" />
         </EntityType>
         <EntityType Name="Pilot" BaseType="DatabaseModel.Employee">
           <Property Name="License" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
@@ -323,6 +341,28 @@
           <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Flights" Relationship="Self.FK_Flight_ToPlane" FromRole="Plane" ToRole="Flight" />
         </EntityType>
+        <EntityType Name="Route">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Origin" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Destination" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Flights" Relationship="Self.FK_Flight_ToRoute" FromRole="Route" ToRole="Flight" />
+          <NavigationProperty Name="OriginLocation" Relationship="Self.FK_Route_ToLocation1" FromRole="Route" ToRole="Location" />
+          <NavigationProperty Name="DestinationLocation" Relationship="Self.FK_Route_ToLocation2" FromRole="Route" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="Flight_id" />
+            <PropertyRef Name="Passenger_email" />
+          </Key>
+          <Property Name="Flight_id" Type="Int32" Nullable="false" />
+          <Property Name="Passenger_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <NavigationProperty Name="Flight" Relationship="Self.FK_Ticket_ToFlight" FromRole="Ticket" ToRole="Flight" />
+          <NavigationProperty Name="Passenger" Relationship="Self.FK_Ticket_ToPassenger" FromRole="Ticket" ToRole="Passenger" />
+        </EntityType>
         <Association Name="FK_Flight_ToPlane">
           <End Role="Plane" Type="Self.Plane" Multiplicity="0..1" />
           <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
@@ -335,61 +375,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Employee_Flight">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-          <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
-        </Association>
-        <Association Name="Ticket">
-          <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
-          <End Role="Passenger" Type="Self.Passenger" Multiplicity="*" />
-        </Association>
-        <EntityContainer Name="AirlinesContext" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Employees" EntityType="Self.Employee" />
-          <EntitySet Name="Flights" EntityType="Self.Flight" />
-          <EntitySet Name="Passengers" EntityType="Self.Passenger" />
-          <EntitySet Name="Planes" EntityType="Self.Plane" />
-          <AssociationSet Name="FK_Flight_ToPlane" Association="Self.FK_Flight_ToPlane">
-            <End Role="Plane" EntitySet="Planes" />
-            <End Role="Flight" EntitySet="Flights" />
-          </AssociationSet>
-          <AssociationSet Name="Employee_Flight" Association="Self.Employee_Flight">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="Flight" EntitySet="Flights" />
-          </AssociationSet>
-          <AssociationSet Name="Ticket" Association="Self.Ticket">
-            <End Role="Flight" EntitySet="Flights" />
-            <End Role="Passenger" EntitySet="Passengers" />
-          </AssociationSet>
-          <EntitySet Name="Routes" EntityType="DatabaseModel.Route" />
-          <AssociationSet Name="FK_Flight_ToRoute" Association="DatabaseModel.FK_Flight_ToRoute">
-            <End Role="Route" EntitySet="Routes" />
-            <End Role="Flight" EntitySet="Flights" />
-          </AssociationSet>
-          <EntitySet Name="Locations" EntityType="DatabaseModel.Location" />
-          <AssociationSet Name="FK_Route_ToLocation1" Association="DatabaseModel.FK_Route_ToLocation1">
-            <End Role="Location" EntitySet="Locations" />
-            <End Role="Route" EntitySet="Routes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Route_ToLocation2" Association="DatabaseModel.FK_Route_ToLocation2">
-            <End Role="Location" EntitySet="Locations" />
-            <End Role="Route" EntitySet="Routes" />
-          </AssociationSet>
-          <EntitySet Name="Admins" EntityType="DatabaseModel.Admin" />
-          </EntityContainer>
-        <EntityType Name="Route">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Origin" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Name="Destination" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Flights" Relationship="DatabaseModel.FK_Flight_ToRoute" FromRole="Route" ToRole="Flight" />
-          <NavigationProperty Name="OriginLocation" Relationship="DatabaseModel.FK_Route_ToLocation1" FromRole="Route" ToRole="Location" />
-          <NavigationProperty Name="DestinationLocation" Relationship="DatabaseModel.FK_Route_ToLocation2" FromRole="Route" ToRole="Location" />
-        </EntityType>
         <Association Name="FK_Flight_ToRoute">
-          <End Type="DatabaseModel.Route" Role="Route" Multiplicity="1" />
-          <End Type="DatabaseModel.Flight" Role="Flight" Multiplicity="*" />
+          <End Role="Route" Type="Self.Route" Multiplicity="1" />
+          <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Route">
               <PropertyRef Name="Id" />
@@ -399,18 +387,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Location">
-          <Key>
-            <PropertyRef Name="Airport" />
-          </Key>
-          <Property Name="Airport" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Name="Timezone" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Routes" Relationship="DatabaseModel.FK_Route_ToLocation1" FromRole="Location" ToRole="Route" />
-          <NavigationProperty Name="Routes1" Relationship="DatabaseModel.FK_Route_ToLocation2" FromRole="Location" ToRole="Route" />
-        </EntityType>
+        <Association Name="FK_Ticket_ToFlight">
+          <End Role="Flight" Type="Self.Flight" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flight">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="Flight_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Route_ToLocation1">
-          <End Type="DatabaseModel.Location" Role="Location" Multiplicity="1" />
-          <End Type="DatabaseModel.Route" Role="Route" Multiplicity="*" />
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Route" Type="Self.Route" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Location">
               <PropertyRef Name="Airport" />
@@ -421,8 +412,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Route_ToLocation2">
-          <End Type="DatabaseModel.Location" Role="Location" Multiplicity="1" />
-          <End Type="DatabaseModel.Route" Role="Route" Multiplicity="*" />
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Route" Type="Self.Route" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Location">
               <PropertyRef Name="Airport" />
@@ -432,27 +423,75 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Admin">
-          <Key>
-            <PropertyRef Name="Email" />
-          </Key>
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-        </EntityType>
+        <Association Name="FK_Ticket_ToPassenger">
+          <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passenger">
+              <PropertyRef Name="Email" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="Passenger_email" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Employee_Flight">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="AirlinesContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Flights" EntityType="Self.Flight" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="Passengers" EntityType="Self.Passenger" />
+          <EntitySet Name="Planes" EntityType="Self.Plane" />
+          <EntitySet Name="Routes" EntityType="Self.Route" />
+          <EntitySet Name="Tickets" EntityType="Self.Ticket" />
+          <AssociationSet Name="FK_Flight_ToPlane" Association="Self.FK_Flight_ToPlane">
+            <End Role="Plane" EntitySet="Planes" />
+            <End Role="Flight" EntitySet="Flights" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Flight_ToRoute" Association="Self.FK_Flight_ToRoute">
+            <End Role="Route" EntitySet="Routes" />
+            <End Role="Flight" EntitySet="Flights" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_ToFlight" Association="Self.FK_Ticket_ToFlight">
+            <End Role="Flight" EntitySet="Flights" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Route_ToLocation1" Association="Self.FK_Route_ToLocation1">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Route" EntitySet="Routes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Route_ToLocation2" Association="Self.FK_Route_ToLocation2">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Route" EntitySet="Routes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_ToPassenger" Association="Self.FK_Ticket_ToPassenger">
+            <End Role="Passenger" EntitySet="Passengers" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="Employee_Flight" Association="Self.Employee_Flight">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Flight" EntitySet="Flights" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="AirlinesContext">
-          <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Pilot)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-              <MappingFragment StoreEntitySet="Pilot">
-                <ScalarProperty Name="Id" ColumnName="Employee_id" />
-                <ScalarProperty Name="License_date" ColumnName="License_date" />
-                <ScalarProperty Name="License" ColumnName="License" />
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="DatabaseModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Employee)">
               <MappingFragment StoreEntitySet="Employee">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -461,32 +500,47 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
-            <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Attendant)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+            <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Attendant)">
               <MappingFragment StoreEntitySet="Attendant">
                 <ScalarProperty Name="Id" ColumnName="Employee_id" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="Height" ColumnName="Height" />
               </MappingFragment>
             </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Pilot)">
+              <MappingFragment StoreEntitySet="Pilot">
+                <ScalarProperty Name="Id" ColumnName="Employee_id" />
+                <ScalarProperty Name="License_date" ColumnName="License_date" />
+                <ScalarProperty Name="License" ColumnName="License" />
+              </MappingFragment>
+            </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Flights">
             <EntityTypeMapping TypeName="DatabaseModel.Flight">
               <MappingFragment StoreEntitySet="Flight">
-                <ScalarProperty Name="Arrival" ColumnName="Arrival" />
-                <ScalarProperty Name="Departure" ColumnName="Departure" />
-                <ScalarProperty Name="Route_id" ColumnName="Route_id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Departure" ColumnName="Departure" />
+                <ScalarProperty Name="Arrival" ColumnName="Arrival" />
                 <ScalarProperty Name="Plane_id" ColumnName="Plane_id" />
+                <ScalarProperty Name="Route_id" ColumnName="Route_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="DatabaseModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="Airport" ColumnName="Location" />
+                <ScalarProperty Name="Timezone" ColumnName="Timezone" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Passengers">
             <EntityTypeMapping TypeName="DatabaseModel.Passenger">
               <MappingFragment StoreEntitySet="Passenger">
-                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -499,6 +553,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Routes">
+            <EntityTypeMapping TypeName="DatabaseModel.Route">
+              <MappingFragment StoreEntitySet="Route">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Origin" ColumnName="Origin" />
+                <ScalarProperty Name="Destination" ColumnName="Destination" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="DatabaseModel.Ticket">
+              <MappingFragment StoreEntitySet="Ticket">
+                <ScalarProperty Name="Flight_id" ColumnName="Flight_id" />
+                <ScalarProperty Name="Passenger_email" ColumnName="Passenger_email" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <AssociationSetMapping Name="Employee_Flight" TypeName="DatabaseModel.Employee_Flight" StoreEntitySet="Employee_Flight">
             <EndProperty Name="Employee">
               <ScalarProperty Name="Id" ColumnName="Employee_id" />
@@ -507,40 +579,7 @@
               <ScalarProperty Name="Id" ColumnName="Flight_id" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="Ticket" TypeName="DatabaseModel.Ticket" StoreEntitySet="Ticket">
-            <EndProperty Name="Flight">
-              <ScalarProperty Name="Id" ColumnName="Flight_id" />
-            </EndProperty>
-            <EndProperty Name="Passenger">
-              <ScalarProperty Name="Email" ColumnName="Passenger_email" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <EntitySetMapping Name="Routes">
-            <EntityTypeMapping TypeName="DatabaseModel.Route">
-              <MappingFragment StoreEntitySet="Route">
-                <ScalarProperty Name="Destination" ColumnName="Destination" />
-                <ScalarProperty Name="Origin" ColumnName="Origin" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Locations">
-            <EntityTypeMapping TypeName="DatabaseModel.Location">
-              <MappingFragment StoreEntitySet="Location">
-                <ScalarProperty Name="Timezone" ColumnName="Timezone" />
-                <ScalarProperty Name="Airport" ColumnName="Location" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Admins">
-            <EntityTypeMapping TypeName="DatabaseModel.Admin">
-              <MappingFragment StoreEntitySet="Admin">
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          </EntityContainerMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

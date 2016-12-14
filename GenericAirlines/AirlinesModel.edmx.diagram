@@ -4,25 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b117583736ce4020a0cc3abb01f83258" Name="Diagram1">
-        <EntityTypeShape EntityType="DatabaseModel.Attendant" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseModel.Employee" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseModel.Flight" Width="1.5" PointX="6" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseModel.Passenger" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseModel.Pilot" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseModel.Plane" Width="1.5" PointX="3.75" PointY="6.25" IsExpanded="true" />
+      <Diagram DiagramId="439e3c39c3b14d5491b9d0bd21aa2dcd" Name="Diagram1">
+        <EntityTypeShape EntityType="DatabaseModel.Admin" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Attendant" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Employee" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Flight" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Location" Width="1.5" PointX="1.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Passenger" Width="1.5" PointX="6" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Pilot" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Plane" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Route" Width="1.5" PointX="3.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Ticket" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
         <AssociationConnector Association="DatabaseModel.FK_Flight_ToPlane" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_Flight_ToRoute" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_Ticket_ToFlight" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_Route_ToLocation1" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_Route_ToLocation2" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_Ticket_ToPassenger" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.Employee_Flight" ManuallyRouted="false" />
-        <AssociationConnector Association="DatabaseModel.Ticket" ManuallyRouted="false" />
-        <InheritanceConnector EntityType="DatabaseModel.Pilot" />
-        <InheritanceConnector EntityType="DatabaseModel.Pilot" />
         <InheritanceConnector EntityType="DatabaseModel.Attendant" />
-        <EntityTypeShape EntityType="DatabaseModel.Route" Width="1.5" PointX="8.375" PointY="0.875" />
-        <AssociationConnector Association="DatabaseModel.FK_Flight_ToRoute" />
-        <EntityTypeShape EntityType="DatabaseModel.Location" Width="1.5" PointX="6.125" PointY="0.75" />
-        <AssociationConnector Association="DatabaseModel.FK_Route_ToLocation1" />
-        <AssociationConnector Association="DatabaseModel.FK_Route_ToLocation2" />
-        <EntityTypeShape EntityType="DatabaseModel.Admin" Width="1.5" PointX="0.75" PointY="0.75" />
+        <InheritanceConnector EntityType="DatabaseModel.Pilot" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

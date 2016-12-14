@@ -15,6 +15,7 @@ namespace GenericAirlines
         public LoginForm()
         {
             InitializeComponent();
+            Console.WriteLine("admin".Encrypt());
         }
 
         private void LoginButton_Click(object sender, EventArgs e)

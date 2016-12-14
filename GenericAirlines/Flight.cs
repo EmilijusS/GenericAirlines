@@ -17,21 +17,21 @@ namespace GenericAirlines
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Flight()
         {
+            this.Tickets = new HashSet<Ticket>();
             this.Employees = new HashSet<Employee>();
-            this.Passengers = new HashSet<Passenger>();
         }
     
         public int Id { get; set; }
-        public string Plane_id { get; set; }
-        public int Route_id { get; set; }
         public System.DateTime Departure { get; set; }
         public System.DateTime Arrival { get; set; }
+        public string Plane_id { get; set; }
+        public int Route_id { get; set; }
     
         public virtual Plane Plane { get; set; }
+        public virtual Route Route { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ticket> Tickets { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Passenger> Passengers { get; set; }
-        public virtual Route Route { get; set; }
     }
 }

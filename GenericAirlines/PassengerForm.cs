@@ -34,13 +34,14 @@ namespace GenericAirlines
             {
                 var passenger = db.Passengers.Find(_email);
 
-                _flights = passenger.Flights.Select(x => new FlightModel
+                _flights = passenger.Tickets.Select(x => new FlightModel
                 {
-                    DestinationLocation = x.Route.DestinationLocation,
-                    OriginLocation = x.Route.OriginLocation,
-                    Arrival = x.Arrival,
-                    Departure = x.Departure,
-                    PlaneModel = x.Plane.Model
+                    DestinationLocation = x.Flight.Route.DestinationLocation,
+                    OriginLocation = x.Flight.Route.OriginLocation,
+                    Arrival = x.Flight.Arrival,
+                    Departure = x.Flight.Departure,
+                    PlaneModel = x.Flight.Plane.Model,
+                    TicketCount = x.Count
                 }).ToList();
             }
 
@@ -61,6 +62,7 @@ namespace GenericAirlines
                 _flights.Departure,
                 _flights.Arrival,
                 _flights.FlightDuration,
+                _flights.TicketCount,
                 _flights.PlaneModel
             }).ToArray();          
         }
@@ -77,6 +79,7 @@ namespace GenericAirlines
             FlightView.Columns["FlightDuration"].DefaultCellStyle.Format = "hh\\ \\h\\ mm\\ \\m";
             FlightView.Columns["FlightDuration"].HeaderText = "Flight duration";
             FlightView.Columns["PlaneModel"].HeaderText = "Plane model";
+            FlightView.Columns["TicketCount"].HeaderText = "Ticket count";
         }
 
         private void SearchButton_Click(object sender, EventArgs e)

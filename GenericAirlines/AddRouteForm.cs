@@ -55,7 +55,7 @@ namespace GenericAirlines
                 route.Origin = OriginBox.Text;
                 route.Destination = DestinationBox.Text;
 
-                db.Routes.Add(route);
+                db.Routes.AddOrUpdate(route);
                 db.SaveChanges();
             }
 

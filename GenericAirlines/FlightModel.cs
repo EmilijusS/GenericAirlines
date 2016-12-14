@@ -14,6 +14,7 @@ namespace GenericAirlines
         public Location OriginLocation { get; set; }
         public Location DestinationLocation { get; set; }
         public TimeSpan FlightDuration { get; set; }
+        public int TicketCount { get; set; }
         public string PlaneModel { get; set; }
     }
 }

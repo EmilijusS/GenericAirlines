@@ -64,9 +64,8 @@ namespace GenericAirlines
                 var routeId = _routes[RouteBox.SelectedIndex].Id;
                 var passenger = db.Passengers.Find(_email);
 
-                //&& x.Passengers.All(y => y != passenger)
                 _flights =
-                    db.Flights.Where(x => x.Route.Id == routeId && x.Plane != null)
+                    db.Flights.Where(x => x.Route.Id == routeId && x.Plane != null && (x.Tickets.Sum(y => y.Count) < x.Plane.Seat_count) || (x.Tickets.Count == 0))
                         .Select(x => new FlightModel
                         {
                             Id = x.Id,
@@ -79,7 +78,6 @@ namespace GenericAirlines
                         .OrderBy(x => x.Departure)
                         .ToList();
 
-                _flights = _flights.Where(x => passenger.Flights.All(y => y.Id != x.Id)).ToList();
             }
 
             foreach (var f in _flights)
@@ -145,9 +143,26 @@ namespace GenericAirlines
             using (var db = new AirlinesContext())
             {
                 var passenger = db.Passengers.Find(_email);
+                Ticket ticket;
 
                 if (_selected != -1)
-                    passenger.Flights.Add(db.Flights.Find((int)FlightView.Rows[_selected].Cells["Id"].Value));
+                {
+                    var flight = db.Flights.Find((int) FlightView.Rows[_selected].Cells["Id"].Value);
+                    ticket = db.Tickets.Find(flight.Id, passenger.Email);
+
+                    if (ticket == null)
+                    {
+                        ticket = db.Tickets.Create();
+                        ticket.Flight = flight;
+                        ticket.Passenger = passenger;
+                        ticket.Count = 1;
+                        db.Tickets.Add(ticket);
+                    }
+                    else
+                    {
+                        ticket.Count = ticket.Count + 1;
+                    }
+                }
 
                 db.SaveChanges();
             }
