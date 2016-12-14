@@ -35,6 +35,7 @@
             this.IdLabel = new System.Windows.Forms.Label();
             this.ModelLabel = new System.Windows.Forms.Label();
             this.SeatCountLabel = new System.Windows.Forms.Label();
+            this.Error = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PlaneSeatCount)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +68,7 @@
             // 
             // ConfirmAddPlane
             // 
-            this.ConfirmAddPlane.Location = new System.Drawing.Point(63, 113);
+            this.ConfirmAddPlane.Location = new System.Drawing.Point(63, 134);
             this.ConfirmAddPlane.Name = "ConfirmAddPlane";
             this.ConfirmAddPlane.Size = new System.Drawing.Size(75, 23);
             this.ConfirmAddPlane.TabIndex = 6;
@@ -102,11 +103,22 @@
             this.SeatCountLabel.TabIndex = 9;
             this.SeatCountLabel.Text = "Seat count";
             // 
+            // Error
+            // 
+            this.Error.AutoSize = true;
+            this.Error.ForeColor = System.Drawing.Color.Red;
+            this.Error.Location = new System.Drawing.Point(67, 118);
+            this.Error.Name = "Error";
+            this.Error.Size = new System.Drawing.Size(29, 13);
+            this.Error.TabIndex = 28;
+            this.Error.Text = "Error";
+            // 
             // AddEditPlaneForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(226, 154);
+            this.ClientSize = new System.Drawing.Size(226, 169);
+            this.Controls.Add(this.Error);
             this.Controls.Add(this.SeatCountLabel);
             this.Controls.Add(this.ModelLabel);
             this.Controls.Add(this.IdLabel);
@@ -132,5 +144,6 @@
         private System.Windows.Forms.Label IdLabel;
         private System.Windows.Forms.Label ModelLabel;
         private System.Windows.Forms.Label SeatCountLabel;
+        private System.Windows.Forms.Label Error;
     }
 }

@@ -33,6 +33,7 @@
             this.TimezoneBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.ConfirmButton = new System.Windows.Forms.Button();
+            this.Error = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // LocationBox
@@ -73,7 +74,7 @@
             // 
             // ConfirmButton
             // 
-            this.ConfirmButton.Location = new System.Drawing.Point(172, 69);
+            this.ConfirmButton.Location = new System.Drawing.Point(172, 86);
             this.ConfirmButton.Name = "ConfirmButton";
             this.ConfirmButton.Size = new System.Drawing.Size(75, 23);
             this.ConfirmButton.TabIndex = 4;
@@ -81,17 +82,28 @@
             this.ConfirmButton.UseVisualStyleBackColor = true;
             this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
             // 
-            // AddLocation
+            // Error
+            // 
+            this.Error.AutoSize = true;
+            this.Error.ForeColor = System.Drawing.Color.Red;
+            this.Error.Location = new System.Drawing.Point(169, 70);
+            this.Error.Name = "Error";
+            this.Error.Size = new System.Drawing.Size(29, 13);
+            this.Error.TabIndex = 28;
+            this.Error.Text = "Error";
+            // 
+            // AddLocationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 105);
+            this.ClientSize = new System.Drawing.Size(434, 121);
+            this.Controls.Add(this.Error);
             this.Controls.Add(this.ConfirmButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TimezoneBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LocationBox);
-            this.Name = "AddLocation";
+            this.Name = "AddLocationForm";
             this.Text = "AddLocation";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -105,5 +117,6 @@
         private System.Windows.Forms.ComboBox TimezoneBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button ConfirmButton;
+        private System.Windows.Forms.Label Error;
     }
 }

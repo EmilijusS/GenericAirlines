@@ -39,6 +39,7 @@
             this.LicenseIdLabel = new System.Windows.Forms.Label();
             this.LicenseDateLabel = new System.Windows.Forms.Label();
             this.ConfirmButton = new System.Windows.Forms.Button();
+            this.Error = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // NameTextBox
@@ -127,7 +128,7 @@
             // 
             // ConfirmButton
             // 
-            this.ConfirmButton.Location = new System.Drawing.Point(85, 142);
+            this.ConfirmButton.Location = new System.Drawing.Point(85, 156);
             this.ConfirmButton.Name = "ConfirmButton";
             this.ConfirmButton.Size = new System.Drawing.Size(75, 23);
             this.ConfirmButton.TabIndex = 12;
@@ -135,11 +136,22 @@
             this.ConfirmButton.UseVisualStyleBackColor = true;
             this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
             // 
+            // Error
+            // 
+            this.Error.AutoSize = true;
+            this.Error.ForeColor = System.Drawing.Color.Red;
+            this.Error.Location = new System.Drawing.Point(82, 139);
+            this.Error.Name = "Error";
+            this.Error.Size = new System.Drawing.Size(29, 13);
+            this.Error.TabIndex = 27;
+            this.Error.Text = "Error";
+            // 
             // AddEditPilotForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(241, 174);
+            this.ClientSize = new System.Drawing.Size(241, 191);
+            this.Controls.Add(this.Error);
             this.Controls.Add(this.ConfirmButton);
             this.Controls.Add(this.LicenseDateLabel);
             this.Controls.Add(this.LicenseIdLabel);
@@ -172,5 +184,6 @@
         private System.Windows.Forms.Label LicenseIdLabel;
         private System.Windows.Forms.Label LicenseDateLabel;
         private System.Windows.Forms.Button ConfirmButton;
+        private System.Windows.Forms.Label Error;
     }
 }

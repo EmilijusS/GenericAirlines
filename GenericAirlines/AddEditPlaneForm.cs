@@ -48,6 +48,24 @@ namespace GenericAirlines
             this.Close();
         }
 
+        private bool Validation()
+        {
+            if (!GenericAirlines.Validation.PlaneId(PlaneId.Text))
+            {
+                Error.Visible = true;
+                Error.Text = "Bad id";
+                return false;
+            }
+            else if (!GenericAirlines.Validation.PlaneModel(PlaneModel.Text))
+            {
+                Error.Visible = true;
+                Error.Text = "Bad model";
+                return false;
+            }
+
+            return true;
+        }
+
         private void AddPlaneForm_Shown(object sender, EventArgs e)
         {
             ConfirmAddPlane.Focus();

@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.RegisterButton = new System.Windows.Forms.Button();
+            this.Error = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // PasswordBox
@@ -106,7 +107,7 @@
             // 
             // RegisterButton
             // 
-            this.RegisterButton.Location = new System.Drawing.Point(63, 120);
+            this.RegisterButton.Location = new System.Drawing.Point(61, 132);
             this.RegisterButton.Name = "RegisterButton";
             this.RegisterButton.Size = new System.Drawing.Size(75, 23);
             this.RegisterButton.TabIndex = 4;
@@ -114,11 +115,23 @@
             this.RegisterButton.UseVisualStyleBackColor = true;
             this.RegisterButton.Click += new System.EventHandler(this.RegisterButton_Click);
             // 
+            // Error
+            // 
+            this.Error.AutoSize = true;
+            this.Error.ForeColor = System.Drawing.Color.Red;
+            this.Error.Location = new System.Drawing.Point(58, 116);
+            this.Error.Name = "Error";
+            this.Error.Size = new System.Drawing.Size(29, 13);
+            this.Error.TabIndex = 8;
+            this.Error.Text = "Error";
+            this.Error.Visible = false;
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(213, 159);
+            this.ClientSize = new System.Drawing.Size(213, 177);
+            this.Controls.Add(this.Error);
             this.Controls.Add(this.RegisterButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -146,5 +159,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button RegisterButton;
+        private System.Windows.Forms.Label Error;
     }
 }

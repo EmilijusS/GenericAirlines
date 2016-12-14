@@ -19,19 +19,54 @@ namespace GenericAirlines
 
         private void RegisterButton_Click(object sender, EventArgs e)
         {
-            using (var db = new AirlinesContext())
+            if (Validation())
             {
-                var passenger = db.Passengers.Create();
-                passenger.Name = NameBox.Text;
-                passenger.Surname = SurnameBox.Text;
-                passenger.Email = EmailBox.Text;
-                passenger.Password = PasswordBox.Text.Encrypt();
+                using (var db = new AirlinesContext())
+                {
+                    var passenger = db.Passengers.Create();
+                    passenger.Name = NameBox.Text;
+                    passenger.Surname = SurnameBox.Text;
+                    passenger.Email = EmailBox.Text.ToLower();
+                    passenger.Password = PasswordBox.Text.Encrypt();
 
-                db.Passengers.Add(passenger);
-                db.SaveChanges();
-            }
+                    db.Passengers.Add(passenger);
+                    db.SaveChanges();
+                }
 
-            this.Close();
+                this.Close();
+            }          
         }
+
+        private bool Validation()
+        {
+            if (!GenericAirlines.Validation.Name(NameBox.Text))
+            {
+                Error.Visible = true;
+                Error.Text = "Bad name";
+                return false;
+            }
+            else if (!GenericAirlines.Validation.Name(SurnameBox.Text))
+            {
+                Error.Visible = true;
+                Error.Text = "Bad surname";
+                return false;
+            }
+            else if (!GenericAirlines.Validation.Email(EmailBox.Text))
+            {
+                Error.Visible = true;
+                Error.Text = "Bad email";
+                return false;
+            }
+            else if (!GenericAirlines.Validation.Password(PasswordBox.Text))
+            {
+                Error.Visible = true;
+                Error.Text = "Bad password";
+                return false;
+            }
+           
+            return true;
+        }
+
+
     }
 }

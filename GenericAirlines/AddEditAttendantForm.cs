@@ -37,21 +37,42 @@ namespace GenericAirlines
 
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
-            using (var db = new AirlinesContext())
+            if (Validation())
             {
-                var attendant = db.Employees.Create<Attendant>();
-                attendant.Id = _id ?? default(int);
-                attendant.Name = NameTextBox.Text;
-                attendant.Surname = SurnameTextBox.Text;
-                attendant.Birth = BirthDatePicker.Value;
-                attendant.Height = (byte)HeightBox.Value;
-                attendant.Gender = GenderBox.Text;
+                using (var db = new AirlinesContext())
+                {
+                    var attendant = db.Employees.Create<Attendant>();
+                    attendant.Id = _id ?? default(int);
+                    attendant.Name = NameTextBox.Text;
+                    attendant.Surname = SurnameTextBox.Text;
+                    attendant.Birth = BirthDatePicker.Value;
+                    attendant.Height = (byte)HeightBox.Value;
+                    attendant.Gender = GenderBox.Text;
 
-                db.Employees.AddOrUpdate(attendant);
-                db.SaveChanges();
+                    db.Employees.AddOrUpdate(attendant);
+                    db.SaveChanges();
+                }
+
+                this.Close();
+            }          
+        }
+
+        private bool Validation()
+        {
+            if (!GenericAirlines.Validation.Name(NameTextBox.Text))
+            {
+                Error.Visible = true;
+                Error.Text = "Bad name";
+                return false;
+            }
+            else if (!GenericAirlines.Validation.Name(SurnameTextBox.Text))
+            {
+                Error.Visible = true;
+                Error.Text = "Bad surname";
+                return false;
             }
 
-            this.Close();
+            return true;
         }
 
         private void AddEditAttendantForm_Shown(object sender, EventArgs e)

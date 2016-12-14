@@ -21,8 +21,8 @@ namespace GenericAirlines
         {
             using (var db = new AirlinesContext())
             {
-                Passenger passenger = db.Passengers.Find(EmailTextBox.Text);
-                Admin admin = db.Admins.Find(EmailTextBox.Text);
+                Passenger passenger = db.Passengers.Find(EmailTextBox.Text.ToLower());
+                Admin admin = db.Admins.Find(EmailTextBox.Text.ToLower());
 
                 if (passenger != null)
                     if (passenger.Password == PasswordTextBox.Text.Encrypt())

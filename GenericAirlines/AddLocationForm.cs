@@ -26,17 +26,32 @@ namespace GenericAirlines
 
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
-            using (var db = new AirlinesContext())
+            if (Validation())
             {
-                var location = db.Locations.Create();
-                location.Airport = LocationBox.Text;
-                location.Timezone = _zones[TimezoneBox.SelectedIndex].Id;
+                using (var db = new AirlinesContext())
+                {
+                    var location = db.Locations.Create();
+                    location.Airport = LocationBox.Text;
+                    location.Timezone = _zones[TimezoneBox.SelectedIndex].Id;
 
-                db.Locations.Add(location);
-                db.SaveChanges();
+                    db.Locations.Add(location);
+                    db.SaveChanges();
+                }
+
+                this.Close();
+            }            
+        }
+
+        private bool Validation()
+        {
+            if (!GenericAirlines.Validation.IATAcode(LocationBox.Text))
+            {
+                Error.Visible = true;
+                Error.Text = "Bad IATA code";
+                return false;
             }
 
-            this.Close();
+            return true;
         }
     }
 }

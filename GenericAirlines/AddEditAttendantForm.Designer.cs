@@ -39,12 +39,13 @@
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.GenderBox = new System.Windows.Forms.ComboBox();
             this.HeightBox = new System.Windows.Forms.NumericUpDown();
+            this.Error = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.HeightBox)).BeginInit();
             this.SuspendLayout();
             // 
             // ConfirmButton
             // 
-            this.ConfirmButton.Location = new System.Drawing.Point(83, 142);
+            this.ConfirmButton.Location = new System.Drawing.Point(83, 157);
             this.ConfirmButton.Name = "ConfirmButton";
             this.ConfirmButton.Size = new System.Drawing.Size(75, 23);
             this.ConfirmButton.TabIndex = 23;
@@ -209,11 +210,22 @@
             0,
             0});
             // 
+            // Error
+            // 
+            this.Error.AutoSize = true;
+            this.Error.ForeColor = System.Drawing.Color.Red;
+            this.Error.Location = new System.Drawing.Point(80, 141);
+            this.Error.Name = "Error";
+            this.Error.Size = new System.Drawing.Size(29, 13);
+            this.Error.TabIndex = 26;
+            this.Error.Text = "Error";
+            // 
             // AddEditAttendantForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(243, 181);
+            this.ClientSize = new System.Drawing.Size(243, 192);
+            this.Controls.Add(this.Error);
             this.Controls.Add(this.HeightBox);
             this.Controls.Add(this.GenderBox);
             this.Controls.Add(this.ConfirmButton);
@@ -247,5 +259,6 @@
         private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.ComboBox GenderBox;
         private System.Windows.Forms.NumericUpDown HeightBox;
+        private System.Windows.Forms.Label Error;
     }
 }

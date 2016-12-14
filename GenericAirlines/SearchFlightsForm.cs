@@ -64,7 +64,7 @@ namespace GenericAirlines
                 var routeId = _routes[RouteBox.SelectedIndex].Id;
                 var passenger = db.Passengers.Find(_email);
 
-                //&& x.Passengers.All(y => y != passenger
+                //&& x.Passengers.All(y => y != passenger)
                 _flights =
                     db.Flights.Where(x => x.Route.Id == routeId && x.Plane != null)
                         .Select(x => new FlightModel
