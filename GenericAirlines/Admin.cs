@@ -12,20 +12,9 @@ namespace GenericAirlines
     using System;
     using System.Collections.Generic;
     
-    public partial class Passenger
+    public partial class Admin
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Passenger()
-        {
-            this.Flights = new HashSet<Flight>();
-        }
-    
-        public string Name { get; set; }
-        public string Surname { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Flight> Flights { get; set; }
     }
 }

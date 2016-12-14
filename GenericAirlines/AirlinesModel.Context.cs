@@ -31,5 +31,6 @@ namespace GenericAirlines
         public virtual DbSet<Plane> Planes { get; set; }
         public virtual DbSet<Route> Routes { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
+        public virtual DbSet<Admin> Admins { get; set; }
     }
 }

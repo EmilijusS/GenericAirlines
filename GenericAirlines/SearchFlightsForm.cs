@@ -41,7 +41,8 @@ namespace GenericAirlines
 
             RouteBox.DataSource = _routes.Select(x => x.Origin + " -> " + x.Destination).ToArray();
 
-            RouteBox_SelectedIndexChanged(this, new EventArgs());
+            if(_routes.Count > 0)
+                RouteBox_SelectedIndexChanged(this, new EventArgs());
 
             DataGridViewCheckBoxColumn Select = new DataGridViewCheckBoxColumn();
             Select.HeaderText = "Select";

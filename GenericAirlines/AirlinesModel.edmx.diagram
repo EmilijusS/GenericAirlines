@@ -22,6 +22,7 @@
         <EntityTypeShape EntityType="DatabaseModel.Location" Width="1.5" PointX="6.125" PointY="0.75" />
         <AssociationConnector Association="DatabaseModel.FK_Route_ToLocation1" />
         <AssociationConnector Association="DatabaseModel.FK_Route_ToLocation2" />
+        <EntityTypeShape EntityType="DatabaseModel.Admin" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
