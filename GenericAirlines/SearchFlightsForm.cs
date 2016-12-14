@@ -140,29 +140,27 @@ namespace GenericAirlines
 
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
+            if (_selected == -1) return;
             using (var db = new AirlinesContext())
             {
                 var passenger = db.Passengers.Find(_email);
-                Ticket ticket;
 
-                if (_selected != -1)
+                var flight = db.Flights.Find((int) FlightView.Rows[_selected].Cells["Id"].Value);
+                var ticket = db.Tickets.Find(flight.Id, passenger.Email);
+
+                if (ticket == null)
                 {
-                    var flight = db.Flights.Find((int) FlightView.Rows[_selected].Cells["Id"].Value);
-                    ticket = db.Tickets.Find(flight.Id, passenger.Email);
-
-                    if (ticket == null)
-                    {
-                        ticket = db.Tickets.Create();
-                        ticket.Flight = flight;
-                        ticket.Passenger = passenger;
-                        ticket.Count = 1;
-                        db.Tickets.Add(ticket);
-                    }
-                    else
-                    {
-                        ticket.Count = ticket.Count + 1;
-                    }
+                    ticket = db.Tickets.Create();
+                    ticket.Flight = flight;
+                    ticket.Passenger = passenger;
+                    ticket.Count = 1;
+                    db.Tickets.Add(ticket);
                 }
+                else
+                {
+                    ticket.Count = ticket.Count + 1;
+                }
+
 
                 db.SaveChanges();
             }

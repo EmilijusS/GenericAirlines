@@ -33,7 +33,8 @@ namespace GenericAirlines
         {
             this.Enabled = false;
             var addFlightForm = new AddFlightForm();
-            addFlightForm.FormClosed += (a, b) => {
+            addFlightForm.FormClosed += (a, b) =>
+            {
                 FlightForm_Load(a, b);
                 this.Enabled = true;
             };
@@ -42,21 +43,19 @@ namespace GenericAirlines
 
         private void FlightDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                if(e.ColumnIndex == DeleteColumnIndex)
-                    DeleteFlight(e.RowIndex);
-                else if (e.ColumnIndex == PlaneColumnIndex ||
-                         e.ColumnIndex == PilotsColumnIndex ||
-                         e.ColumnIndex == AttendantsColumnIndex ||
-                         e.ColumnIndex == PassengersColumnIndex)
-                    EditFlight(e.RowIndex, e.ColumnIndex);
-            }
+            if (e.RowIndex < 0) return;
+            if (e.ColumnIndex == DeleteColumnIndex)
+                DeleteFlight(e.RowIndex);
+            else if (e.ColumnIndex == PlaneColumnIndex ||
+                     e.ColumnIndex == PilotsColumnIndex ||
+                     e.ColumnIndex == AttendantsColumnIndex ||
+                     e.ColumnIndex == PassengersColumnIndex)
+                EditFlight(e.RowIndex, e.ColumnIndex);
         }
 
         private void DeleteFlight(int rowIndex)
         {
-            var d = (DataRowView)FlightDataGrid.Rows[rowIndex].DataBoundItem;
+            var d = (DataRowView) FlightDataGrid.Rows[rowIndex].DataBoundItem;
 
             using (var db = new AirlinesContext())
             {
@@ -70,7 +69,7 @@ namespace GenericAirlines
         private void EditFlight(int rowIndex, int columnIndex)
         {
             Flight flight;
-            var d = (DataRowView)FlightDataGrid.Rows[rowIndex].DataBoundItem;
+            var d = (DataRowView) FlightDataGrid.Rows[rowIndex].DataBoundItem;
             Form form;
 
             using (var db = new AirlinesContext())
@@ -103,6 +102,5 @@ namespace GenericAirlines
 
             form.Show();
         }
-
     }
 }

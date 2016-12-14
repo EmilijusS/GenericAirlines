@@ -29,18 +29,15 @@ namespace GenericAirlines
             using (var db = new AirlinesContext())
             {
                 var flight = db.Flights.Find(_flight.Id);
-
+                var employeeIds = new HashSet<int>(flight.Employees.Select(x => x.Id));
                 //tbh I just want to finish already
                 foreach (DataGridViewRow r in AttendantsDataGrid.Rows)
                 {
                     var d = (DataRowView)r.DataBoundItem;
 
-                    foreach (var a in flight.Employees)
+                    if (employeeIds.Contains((int)d.Row[0]))
                     {
-                        if ((int)d.Row[0] == a.Id)
-                        {
-                            r.Cells[SelectColumnIndex].Value = true;
-                        }
+                        r.Cells[SelectColumnIndex].Value = true;
                     }
                 }
             }
