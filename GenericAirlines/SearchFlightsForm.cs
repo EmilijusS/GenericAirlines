@@ -78,6 +78,8 @@ namespace GenericAirlines
                         })
                         .OrderBy(x => x.Departure)
                         .ToList();
+
+                _flights = _flights.Where(x => passenger.Flights.All(y => y.Id != x.Id)).ToList();
             }
 
             foreach (var f in _flights)

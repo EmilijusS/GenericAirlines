@@ -145,6 +145,7 @@
             this.Error.Size = new System.Drawing.Size(29, 13);
             this.Error.TabIndex = 27;
             this.Error.Text = "Error";
+            this.Error.Visible = false;
             // 
             // AddEditPilotForm
             // 

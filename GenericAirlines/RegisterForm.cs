@@ -24,16 +24,25 @@ namespace GenericAirlines
                 using (var db = new AirlinesContext())
                 {
                     var passenger = db.Passengers.Create();
-                    passenger.Name = NameBox.Text;
-                    passenger.Surname = SurnameBox.Text;
-                    passenger.Email = EmailBox.Text.ToLower();
-                    passenger.Password = PasswordBox.Text.Encrypt();
+                    if (db.Passengers.Find(EmailBox.Text.ToLower()) == null)
+                    {
+                        passenger.Name = NameBox.Text;
+                        passenger.Surname = SurnameBox.Text;
+                        passenger.Email = EmailBox.Text.ToLower();
+                        passenger.Password = PasswordBox.Text.Encrypt();
 
-                    db.Passengers.Add(passenger);
-                    db.SaveChanges();
+                        db.Passengers.Add(passenger);
+                        db.SaveChanges();
+
+                        this.Close();
+                    }
+                    else
+                    {
+                        Error.Visible = true;
+                        Error.Text = "Email already used";
+                    }
+
                 }
-
-                this.Close();
             }          
         }
 
